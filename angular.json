@@ -40,6 +40,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/sa-juan-bautista-repo/",
               "budgets": [
                 {
                   "type": "initial",
