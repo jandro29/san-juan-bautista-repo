@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../../node_modules/@angular/cdk/fesm2022/boolean-property-DaaVhX5A.mjs"],
+  "sourcesContent": ["/** Coerces a data-bound value (typically a string) to a boolean. */\nfunction coerceBooleanProperty(value) {\n  return value != null && `${value}` !== 'false';\n}\nexport { coerceBooleanProperty as c };\n"],
+  "mappings": ";AACA,SAAS,sBAAsB,OAAO;AACpC,SAAO,SAAS,QAAQ,GAAG,KAAK,OAAO;AACzC;",
+  "names": []
+}
