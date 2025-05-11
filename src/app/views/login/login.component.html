@@ -1,0 +1,119 @@
+<div class="w-full h-screen">
+  <div class="flex columns-2 h-screen h-full">
+          <!--- --->
+          <!--- --->
+          <!--- --->
+          <!---LOTTIFY DEL LOGIN--->
+          <!--- --->
+          <!--- --->
+          <!--- --->
+    <div class="w-[50%] h-screen bg-white flex items-center justify-center ">
+        <iframe class="w-[600px] h-[600px]" src="https://lottie.host/embed/ee7b8b6a-b6fd-493b-96a3-4537050dbcc4/FWKx5648dO.lottie"></iframe>
+    </div>
+
+          <!--- --->
+          <!--- ---> 
+          <!--- --->
+          <!---FIN LOTTIFY DEL LOGIN--->
+          <!--- --->
+          <!--- --->
+          <!--- --->
+
+          <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- --->
+          <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- --->
+          <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- --->
+
+
+          <!--- --->
+          <!--- --->
+          <!--- --->
+          <!---INICIO DEL FORMULARIO DEL LOGIN--->
+          <!--- --->
+          <!--- --->
+          <!--- --->
+
+    <div class="w-[50%] h-screen bg-[#EBEFF5] h-full flex justify-center items-center">
+
+      <div class="flex grid grid-cols-1">
+        <div class="flex justify-center">
+          <h4 class="text-[30px] font-bold text-[#302C54]">Pantalla de Login</h4>
+        </div>
+
+        <div class="w-[400px] bg-white h-[450px] m-0 rounded-lg  mt-[50px]">
+
+
+          <div class="w-full h-[80px] bg-[#302C54] flex items-center grid grid-cols-1 rounded-tl-lg rounded-tr-lg">
+            <p class="flex top-0 justify-center items-center text-white">
+              ESCUELA SAN JUAN BAUTISTA
+            </p>
+            <p class="w-full flex top-0 justify-center items-center text-white">
+              Sistema de Control de Pagos
+            </p>
+          </div>
+
+
+          <!--- --->
+          <!--- --->
+          <div class="m-[30px]">
+            <p class="text-xl text-gray-600/75 dark:text-gray-400/75 font-semibold">Usuario</p>
+
+            <form class="example-form mt-[10px]">
+              <mat-form-field class="example-full-width  w-[100%]">
+                <mat-label>Usuario</mat-label>
+                <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+                <!---<mat-hint>Ingrese el Usuario</mat-hint>--->
+                @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+                <mat-error>Please enter a valid email address</mat-error>
+                }
+                @if (emailFormControl.hasError('required')) {
+                <!---<mat-error>El Usuario <strong>es requerido</strong></mat-error>--->
+                }
+              </mat-form-field>
+
+            </form>
+          </div>
+
+          <div class="m-[30px] mt-[-35px]">
+            <p class="text-xl text-gray-600/75 dark:text-gray-400/75 font-semibold">Contraseña</p>
+            <form class="example-form mt-[10px]">
+              <mat-form-field class="w-[100%]">
+                <mat-label>Contraseña</mat-label>
+                <input matInput [type]="hide() ? 'password' : 'text'" />
+                <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide()">
+                  <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+            </form>
+
+          </div>
+
+
+          <div class="m-[30px] mt-[-21px]">
+            <section>
+              <div class="example-button-row w-[100%]">
+                <button mat-fab extended style="width: 100%; background: #302C54; color: white;">INGRESAR AL
+                  SISTEMA</button>
+              </div>
+            </section>
+
+            <div class="mt-[10px]">
+              <p>¿Olvidó su contraseña? <span> <a href="#" class=" text-[#302C54]">Recuperar</a></span></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+          <!--- --->
+          <!--- --->
+          <!--- --->
+          <!---FIN DEL FORMULARIO DEL LOGIN--->
+          <!--- --->
+          <!--- --->
+          <!--- --->
+
+
+  </div>
+</div>
