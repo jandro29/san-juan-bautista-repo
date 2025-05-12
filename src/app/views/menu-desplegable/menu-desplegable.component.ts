@@ -8,9 +8,7 @@ import { Component, signal } from '@angular/core';
   styleUrl: './menu-desplegable.component.css'
 })
 export class MenuDesplegableComponent {
-   isMenuOpen = signal(false);
+   
 
-  toggleMenu() {
-    this.isMenuOpen.update(value => !value);
-  }
+  
 }

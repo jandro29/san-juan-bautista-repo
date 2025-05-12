@@ -1,31 +1,10 @@
 
-    <!-- Barra superior -->
-    <div class="h-[50px] w-full bg-[#302C54] z-20 relative">
-      <div class="grid grid-cols-2 h-full mx-[20px] text-white">
-        <!-- Botón menú hamburguesa -->
-        <div class="flex items-center">
-          <button (click)="toggleMenu()" class="focus:outline-none">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
-              viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-          <p class="ml-2">SJB Control de Pagos</p>
-        </div>
-        <div class="flex items-center justify-end">
-          <p>Usuario</p>
-        </div>
-      </div>
-    </div>
   
     <!-- Menú lateral -->
     <div
-      class="fixed top-0 left-0 h-full w-64 bg-[#1E1B44] text-white shadow-lg transform transition-transform duration-300 ease-in-out z-10"
-      [class.-translate-x-full]="!isMenuOpen()"
-      [class.translate-x-0]="isMenuOpen()">
-      <div class="p-4">
-        <h2 class="text-lg font-semibold mb-4">Menú</h2>
+      class="flex  top-0 left-0 h-screen w-64 bg-[#1E1B44] text-white shadow-lg transform transition-transform duration-300 ease-in-out z-10">
+      <div class="p-4 w-[100%]">
+        <!--<h2 class="text-lg font-semibold mb-4">Menú</h2> -->
         <ul class="space-y-2">
             <li><a href="#" class="block hover:bg-[#302C54] p-2 rounded">Dashboard</a></li>
             <li><a href="#" class="block hover:bg-[#302C54] p-2 rounded">Estudiantes</a></li>
@@ -36,4 +15,3 @@
         </ul>
       </div>
     </div>
-  
