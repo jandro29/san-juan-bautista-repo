@@ -1,6 +1,7 @@
+import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
   _StructuralStylesLoader
-} from "./chunk-SIOI2MB3.js";
+} from "./chunk-HGO4UU4U.js";
 import {
   FocusMonitor,
   MatCommonModule,
@@ -8,16 +9,16 @@ import {
   isFakeMousedownFromScreenReader,
   isFakeTouchstartFromScreenReader,
   normalizePassiveListenerOptions
-} from "./chunk-2MNJZG5S.js";
+} from "./chunk-DIG7K2L7.js";
 import {
   Platform,
   _CdkPrivateStyleLoader,
   _bindEventWithOptions,
   coerceElement
-} from "./chunk-3ASXSO3R.js";
+} from "./chunk-RAMJ4HO2.js";
 import {
   DOCUMENT
-} from "./chunk-4I5AIZVK.js";
+} from "./chunk-INIFBXRJ.js";
 import {
   ANIMATION_MODULE_TYPE,
   ChangeDetectionStrategy,
@@ -33,8 +34,6 @@ import {
   Renderer2,
   RendererFactory2,
   ViewEncapsulation,
-  __spreadProps,
-  __spreadValues,
   booleanAttribute,
   inject,
   numberAttribute,
@@ -54,7 +53,11 @@ import {
   ɵɵgetInheritedFactory,
   ɵɵprojection,
   ɵɵprojectionDef
-} from "./chunk-ZR2YJFQJ.js";
+} from "./chunk-AT4BY72T.js";
+import {
+  __spreadProps,
+  __spreadValues
+} from "./chunk-YHCV7DAQ.js";
 
 // node_modules/@angular/material/fesm2022/ripple-BT3tzh6F.mjs
 var RippleState;
@@ -1787,4 +1790,4 @@ export {
   MatMiniFabAnchor,
   MatButtonModule
 };
-//# sourceMappingURL=chunk-O6TQUL5H.js.map
+//# sourceMappingURL=chunk-ZX3GZ6DH.js.map

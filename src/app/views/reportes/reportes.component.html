@@ -1,0 +1,121 @@
+<section class="contenedor w-full h-screen overflow-auto">
+    <app-barra-superior></app-barra-superior>
+
+    <div class="flex">
+        <app-menu-desplegable>
+        </app-menu-desplegable>
+
+        <div class="flex h-screen w-full bg-[#DBE0E6]   justify-center">
+
+            <div class=" bg-[#F6F5FF] w-[750px]">
+
+                <div class="flex flex-col h-screen w-full bg-[#DBE0E6]  flex items-center justify-center">
+                    <div class=" bg-[#F6F5FF] w-[1000px]">
+                        <div class="m-[20px]">
+                            <p class=" text-[37px] font-bold">REPORTE PAGOS</p>
+                        </div>
+
+                        <div class=" flex">
+                            <div class="m-[20px] w-[100%] flex">
+                                <div class="flex items-center mr-[17px]">
+                                    <p>Nombre/CD</p>
+                                </div>
+                                <mat-form-field class=" w-[70%]">
+
+                                    <input matInput placeholder="Buscar estudiante por nombre o código...">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="m-[20px] w-[100%] flex">
+                                <div class="flex items-center mr-[17px]">
+                                    <p>Fecha de Ingreso</p>
+                                </div>
+                                <mat-form-field class=" w-[45%]">
+
+                                    <input matInput placeholder="Grado: Todos">
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="flex">
+
+                            <div class="m-[20px] w-[100%] flex">
+                                <div class="flex items-center mr-[55px]">
+                                    <p>Banco</p>
+                                </div>
+                                <mat-form-field class=" w-[25%]">
+
+                                    <input matInput placeholder="Selecciona Banco">
+                                </mat-form-field>
+
+                                <div class="ml-[27.5px]">
+                                    <button class="w-[180px] h-[50px] bg-[#07B71B]">
+                                        BUSCAR
+                                    </button>
+                                    <button class="ml-[27.5px] w-[180px] h-[50px] bg-[#CE1A1A]">
+                                        LIMPIAR
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="w-[100%] bg-[#E6E5F2]">
+                            <p class="text-[31px] text-[#636179] ml-[31px]">Gestionar Reporte de Pagos</p>
+                        </div>
+                        
+                        <section class="example-container mat-elevation-z8 w-full overflow-auto max-h-[310px]" tabindex="0">
+                            <table mat-table [dataSource]="dataSource" class="min-w-full">
+
+                                <!-- Position Column -->
+                                <ng-container matColumnDef="position">
+                                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                                </ng-container>
+
+                                <!-- Name Column -->
+                                <ng-container matColumnDef="name">
+                                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                                </ng-container>
+
+                                <!-- Weight Column -->
+                                <ng-container matColumnDef="weight">
+                                    <th mat-header-cell *matHeaderCellDef> Weight </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                                </ng-container>
+
+                                <!-- Symbol Column -->
+                                <ng-container matColumnDef="symbol">
+                                    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+                        </section>
+
+                    </div>
+
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</section>
+
+<section>
+
+</section>

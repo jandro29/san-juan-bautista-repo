@@ -1,7 +1,6 @@
-import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
   _StructuralStylesLoader
-} from "./chunk-HGO4UU4U.js";
+} from "./chunk-SIOI2MB3.js";
 import {
   FocusMonitor,
   MatCommonModule,
@@ -9,16 +8,16 @@ import {
   isFakeMousedownFromScreenReader,
   isFakeTouchstartFromScreenReader,
   normalizePassiveListenerOptions
-} from "./chunk-FUMAFXDH.js";
+} from "./chunk-XSZPY2OV.js";
 import {
   Platform,
   _CdkPrivateStyleLoader,
   _bindEventWithOptions,
   coerceElement
-} from "./chunk-QDIAISNZ.js";
+} from "./chunk-UT4PPPPR.js";
 import {
   DOCUMENT
-} from "./chunk-INIFBXRJ.js";
+} from "./chunk-4I5AIZVK.js";
 import {
   ANIMATION_MODULE_TYPE,
   ChangeDetectionStrategy,
@@ -34,6 +33,8 @@ import {
   Renderer2,
   RendererFactory2,
   ViewEncapsulation,
+  __spreadProps,
+  __spreadValues,
   booleanAttribute,
   inject,
   numberAttribute,
@@ -53,11 +54,7 @@ import {
   ɵɵgetInheritedFactory,
   ɵɵprojection,
   ɵɵprojectionDef
-} from "./chunk-AT4BY72T.js";
-import {
-  __spreadProps,
-  __spreadValues
-} from "./chunk-YHCV7DAQ.js";
+} from "./chunk-ZR2YJFQJ.js";
 
 // node_modules/@angular/material/fesm2022/ripple-BT3tzh6F.mjs
 var RippleState;
@@ -1776,10 +1773,10 @@ var MatButtonModule = class _MatButtonModule {
 
 export {
   MatRipple,
-  MatRippleModule,
   MAT_BUTTON_CONFIG,
   MatIconButton,
   MatIconAnchor,
+  MatRippleModule,
   MatButton,
   MatAnchor,
   MAT_FAB_DEFAULT_OPTIONS,
@@ -1790,4 +1787,4 @@ export {
   MatMiniFabAnchor,
   MatButtonModule
 };
-//# sourceMappingURL=chunk-ERRPCKME.js.map
+//# sourceMappingURL=chunk-G2AHIZXV.js.map

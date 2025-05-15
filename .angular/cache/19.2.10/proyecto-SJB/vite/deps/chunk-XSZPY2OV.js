@@ -7,7 +7,7 @@ import {
   _bindEventWithOptions,
   coerceElement,
   coerceNumberProperty
-} from "./chunk-3ASXSO3R.js";
+} from "./chunk-UT4PPPPR.js";
 import {
   DOCUMENT
 } from "./chunk-4I5AIZVK.js";
@@ -3134,4 +3134,4 @@ export {
   AriaDescriber,
   MatCommonModule
 };
-//# sourceMappingURL=chunk-2MNJZG5S.js.map
+//# sourceMappingURL=chunk-XSZPY2OV.js.map

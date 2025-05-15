@@ -8,7 +8,7 @@ import {
   _bindEventWithOptions,
   coerceElement,
   coerceNumberProperty
-} from "./chunk-QDIAISNZ.js";
+} from "./chunk-RAMJ4HO2.js";
 import {
   DOCUMENT
 } from "./chunk-INIFBXRJ.js";
@@ -3121,6 +3121,7 @@ var MatCommonModule = class _MatCommonModule {
 })();
 
 export {
+  coerceArray,
   isFakeMousedownFromScreenReader,
   isFakeTouchstartFromScreenReader,
   ENTER,
@@ -3135,7 +3136,6 @@ export {
   normalizePassiveListenerOptions,
   FocusMonitor,
   _VisuallyHiddenLoader,
-  coerceArray,
   ObserversModule,
   LiveAnnouncer,
   A11yModule,
@@ -3147,4 +3147,4 @@ export {
   AriaDescriber,
   MatCommonModule
 };
-//# sourceMappingURL=chunk-FUMAFXDH.js.map
+//# sourceMappingURL=chunk-DIG7K2L7.js.map
