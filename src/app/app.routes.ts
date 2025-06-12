@@ -15,28 +15,28 @@ export const routes: Routes = [
     },
 
     {
-        path: '/inicio-control-de-pagos',
+        path: 'inicio-control-de-pagos',
         component: InicioControlPagosComponent
     },
 
     {
-        path: '/estudiantes',
+        path: 'estudiantes',
         component: InternaEstudiantesComponent
     },
 
     {
-        path: '/mensualidades',
+        path: 'mensualidades',
         component: PagoMensualidadesComponent
     },
 
     
     {
-        path: '/matriculas',
+        path: 'matriculas',
         component: PagoMatriculasComponent
     },
 
     {
-        path: '/reportes',
+        path: 'reportes',
         component: ReportesComponent
     }
 ]
