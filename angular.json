@@ -14,7 +14,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "baseHref": "/proyecto-SJB/",
-            "outputPath": "docs",
+            "outputPath": "dist/proyecto-sjb",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [

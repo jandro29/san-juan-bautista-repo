@@ -1,0 +1,10 @@
+{
+  "routes": {
+    "/sa-juan-bautista-repo": {},
+    "/sa-juan-bautista-repo/estudiantes": {},
+    "/sa-juan-bautista-repo/inicio-control-de-pagos": {},
+    "/sa-juan-bautista-repo/matriculas": {},
+    "/sa-juan-bautista-repo/mensualidades": {},
+    "/sa-juan-bautista-repo/reportes": {}
+  }
+}
