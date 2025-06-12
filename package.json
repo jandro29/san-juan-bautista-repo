@@ -8,6 +8,7 @@
     "build:gh": "ng build --base-href=/proyecto-SJB/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
+    "build": "Angular build --output public"
   },
   "private": true,
   "dependencies": {
