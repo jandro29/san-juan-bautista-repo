@@ -20,6 +20,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
