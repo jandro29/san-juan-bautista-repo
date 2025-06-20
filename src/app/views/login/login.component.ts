@@ -1,21 +1,8 @@
 import { Component, signal } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  FormGroupDirective,
-  NgForm,
-  Validators,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { CommonModule } from '@angular/common';
-import { MatDividerModule } from '@angular/material/divider';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -26,31 +13,20 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    MatDividerModule,
-  ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required])
-  });
-
+  loginForm: FormGroup;
   matcher = new MyErrorStateMatcher();
   hide = signal(true);
 
-  constructor(private http: HttpClient) {}
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
+  }
 
   clickEvent(event: MouseEvent) {
     this.hide.set(!this.hide());
@@ -59,22 +35,20 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.invalid) {
-      alert('Por favor, completa todos los campos correctamente.');
+      this.loginForm.markAllAsTouched();
       return;
     }
 
     const { email, password } = this.loginForm.value;
 
-    this.http.post('https://san-juan-bautista.vercel.app/api/login', { email, password }).subscribe({
+    this.http.post('https://TU_BACKEND.vercel.app/api/login', { email, password }).subscribe({
       next: (res: any) => {
-        alert('¡Bienvenido al sistema! ✅');
-        console.log(res);
-        // Puedes guardar el token o redirigir aquí
+        alert('Login exitoso');
+        this.router.navigate(['/dashboard']); // Ajusta según tu ruta
       },
       error: (err) => {
-        console.error('Error en login:', err);
-        alert('Correo o contraseña incorrectos ❌');
-      }
+        alert('Usuario o contraseña incorrectos');
+      },
     });
   }
 }
