@@ -32,8 +32,17 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   standalone: true,
-  imports: [ CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, HttpClientModule, RouterModule ]
-
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    HttpClientModule,
+    RouterModule
+  ]
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -60,9 +69,13 @@ export class LoginComponent {
 
     const { email, password } = this.loginForm.value;
 
-    this.http.post('https://tu-backend.vercel.app/api/login', { email, password }).subscribe({
-      next: () => this.router.navigate(['/inicio-control-de-pagos']),
-      error: () => alert('Credenciales incorrectas')
+    this.http.post('https://san-juan-bautista.vercel.app/api/login', { email, password }).subscribe({
+      next: () => {
+        this.router.navigateByUrl('/inicio-control-de-pagos');
+      },
+      error: () => {
+        alert('Credenciales incorrectas');
+      }
     });
   }
 }
