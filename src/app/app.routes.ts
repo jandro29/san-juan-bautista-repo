@@ -1,9 +1,4 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './views/login/login.component';
-import { InternaEstudiantesComponent } from './views/interna-estudiantes/interna-estudiantes.component';
-import { PagoMensualidadesComponent } from './views/pago-mensualidades/pago-mensualidades.component';
-import { ReportesComponent } from './views/reportes/reportes.component';
-import { PagoMatriculasComponent } from './views/pago-matriculas/pago-matriculas.component';
 
 export const routes: Routes = [
   {

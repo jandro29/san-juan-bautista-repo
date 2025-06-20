@@ -33,16 +33,17 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.css'],
   standalone: true,
   imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    HttpClientModule,
-    RouterModule
-  ]
+  CommonModule,
+  ReactiveFormsModule,
+  FormsModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatIconModule,
+  MatButtonModule,
+  HttpClientModule,
+  RouterModule  // ← ESTE es importante
+]
+
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -73,7 +74,8 @@ export class LoginComponent {
       next: (res: any) => {
         alert('Login exitoso');
         // Redireccionar correctamente
-        this.router.navigateByUrl('/inicio-control-de-pagos');
+        this.router.navigate(['/inicio-control-de-pagos']);
+
       },
       error: () => alert('Credenciales incorrectas')
     });
