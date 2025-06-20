@@ -33,15 +33,9 @@
               <p class="text-xl text-gray-600/75 font-semibold">Usuario</p>
               <mat-form-field class="w-[100%]">
                 <!--<mat-label>Usuario</mat-label>-->
-                <input
-                  type="email"
-                  matInput
-                  formControlName="email"
-                  [errorStateMatcher]="matcher"
-                  [ngClass]="{
+                <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher" [ngClass]="{
                     'border border-red-500': loginForm.get('email')?.invalid && loginForm.get('email')?.touched
-                  }"
-                />
+                  }" />
               </mat-form-field>
             </div>
 
@@ -50,19 +44,10 @@
               <p class="text-xl text-gray-600/75 font-semibold">Contraseña</p>
               <mat-form-field class="w-[100%]">
                 <!--<mat-label>Contraseña</mat-label>-->
-                <input
-                  matInput
-                  [type]="hide() ? 'password' : 'text'"
-                  formControlName="password"
-                  [ngClass]="{
+                <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" [ngClass]="{
                     'border border-red-500': loginForm.get('password')?.invalid && loginForm.get('password')?.touched
-                  }"
-                />
-                <button
-                  mat-icon-button
-                  matSuffix
-                  (click)="clickEvent($event)"
-                  [attr.aria-label]="'Hide password'"
+                  }" />
+                <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
                   [attr.aria-pressed]="hide()">
                   <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
                 </button>
@@ -73,15 +58,13 @@
             <div class="m-[30px] mt-[-21px]">
               <section>
                 <div class="example-button-row w-[100%]">
-                  <button
-                    type="submit"
-                    mat-fab
-                    extended
+                  <button type="submit" mat-raised-button color="primary"
                     style="width: 100%; background: #302C54; color: white;">
                     INGRESAR AL SISTEMA
                   </button>
                 </div>
               </section>
+
 
               <div class="mt-[10px]">
                 <p>¿Olvidó su contraseña? <span><a href="#" class="text-[#302C54]">Recuperar</a></span></p>
