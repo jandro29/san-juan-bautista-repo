@@ -1,36 +1,40 @@
 <div class="w-full h-screen">
   <div class="flex columns-2 h-screen h-full">
-          <!--- --->
-          <!--- --->
-          <!--- --->
-          <!---LOTTIFY DEL LOGIN--->
-          <!--- --->
-          <!--- --->
-          <!--- --->
+    <!--- --->
+    <!--- --->
+    <!--- --->
+    <!---LOTTIFY DEL LOGIN--->
+    <!--- --->
+    <!--- --->
+    <!--- --->
     <div class="w-[50%] h-screen bg-white flex items-center justify-center ">
-        <iframe class="w-[600px] h-[600px]" src="https://lottie.host/embed/ee7b8b6a-b6fd-493b-96a3-4537050dbcc4/FWKx5648dO.lottie"></iframe>
+      <iframe class="w-[600px] h-[600px]"
+        src="https://lottie.host/embed/ee7b8b6a-b6fd-493b-96a3-4537050dbcc4/FWKx5648dO.lottie"></iframe>
     </div>
 
-          <!--- --->
-          <!--- ---> 
-          <!--- --->
-          <!---FIN LOTTIFY DEL LOGIN--->
-          <!--- --->
-          <!--- --->
-          <!--- --->
+    <!--- --->
+    <!--- --->
+    <!--- --->
+    <!---FIN LOTTIFY DEL LOGIN--->
+    <!--- --->
+    <!--- --->
+    <!--- --->
 
-          <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- --->
-          <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- --->
-          <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- --->
+    <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- --->
+    <!--- --->
+    <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- --->
+    <!--- --->
+    <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- ---> <!--- --->
+    <!--- --->
 
 
-          <!--- --->
-          <!--- --->
-          <!--- --->
-          <!---INICIO DEL FORMULARIO DEL LOGIN--->
-          <!--- --->
-          <!--- --->
-          <!--- --->
+    <!--- --->
+    <!--- --->
+    <!--- --->
+    <!---INICIO DEL FORMULARIO DEL LOGIN--->
+    <!--- --->
+    <!--- --->
+    <!--- --->
 
     <div class="w-[50%] h-screen bg-[#EBEFF5] h-full flex justify-center items-center">
 
@@ -57,34 +61,35 @@
           <div class="m-[30px]">
             <p class="text-xl text-gray-600/75 dark:text-gray-400/75 font-semibold">Usuario</p>
 
-            <form class="example-form mt-[10px]">
-              <mat-form-field class="example-full-width  w-[100%]">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="example-form mt-[10px]">
+              <mat-form-field class="example-full-width w-[100%]">
                 <mat-label>Usuario</mat-label>
-                <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher">
-                <!---<mat-hint>Ingrese el Usuario</mat-hint>--->
-                @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
-                <mat-error>Please enter a valid email address</mat-error>
-                }
-                @if (emailFormControl.hasError('required')) {
-                <!---<mat-error>El Usuario <strong>es requerido</strong></mat-error>--->
-                }
+                <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher">
+                <mat-error
+                  *ngIf="loginForm.get('email')?.hasError('email') && !loginForm.get('email')?.hasError('required')">
+                  Ingrese un correo válido
+                </mat-error>
+                <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+                  El usuario es requerido
+                </mat-error>
               </mat-form-field>
 
-            </form>
           </div>
 
           <div class="m-[30px] mt-[-35px]">
             <p class="text-xl text-gray-600/75 dark:text-gray-400/75 font-semibold">Contraseña</p>
-            <form class="example-form mt-[10px]">
+            <div class="m-[30px] mt-[-35px]">
+              <p class="text-xl text-gray-600/75 font-semibold">Contraseña</p>
               <mat-form-field class="w-[100%]">
                 <mat-label>Contraseña</mat-label>
-                <input matInput [type]="hide() ? 'password' : 'text'" />
+                <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" />
                 <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
                   [attr.aria-pressed]="hide()">
                   <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
               </mat-form-field>
-            </form>
+            </div>
+
 
           </div>
 
@@ -92,8 +97,9 @@
           <div class="m-[30px] mt-[-21px]">
             <section>
               <div class="example-button-row w-[100%]">
-                <button mat-fab extended style="width: 100%; background: #302C54; color: white;">INGRESAR AL
-                  SISTEMA</button>
+                <button type="submit" mat-fab extended style="width: 100%; background: #302C54; color: white;">
+                  INGRESAR AL SISTEMA
+                </button>
               </div>
             </section>
 
@@ -106,13 +112,13 @@
       </div>
     </div>
 
-          <!--- --->
-          <!--- --->
-          <!--- --->
-          <!---FIN DEL FORMULARIO DEL LOGIN--->
-          <!--- --->
-          <!--- --->
-          <!--- --->
+    <!--- --->
+    <!--- --->
+    <!--- --->
+    <!---FIN DEL FORMULARIO DEL LOGIN--->
+    <!--- --->
+    <!--- --->
+    <!--- --->
 
 
   </div>
