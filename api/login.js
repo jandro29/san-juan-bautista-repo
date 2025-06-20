@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 
 const supabase = createClient(
   'https://fgfmtlvmpmiudjbufrjb.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...' // tu API Key (OK usarla aquí)
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnZm10bHZtcG1pdWRqYnVmcmpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAzOTk1MTUsImV4cCI6MjA2NTk3NTUxNX0.RFIiNRunac0E1GhUwE6VKRpTNksW1y-s62GIY3DzGHA' // tu API Key (OK usarla aquí)
 );
 
 export default async function handler(req, res) {
