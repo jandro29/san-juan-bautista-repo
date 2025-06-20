@@ -12,7 +12,7 @@ import "./chunk-2O4WY5GE.js";
 import "./chunk-IBYU652R.js";
 import {
   MatCommonModule
-} from "./chunk-XSZPY2OV.js";
+} from "./chunk-GDS236QC.js";
 import {
   Directionality
 } from "./chunk-SG4VJXUJ.js";
