@@ -69,13 +69,13 @@ export class LoginComponent {
 
     const { email, password } = this.loginForm.value;
 
-    this.http.post('https://san-juan-bautista.vercel.app/api/login', { email, password }).subscribe({
-      next: () => {
+    this.http.post('https://tu-backend.vercel.app/api/login', { email, password }).subscribe({
+      next: (res: any) => {
+        alert('Login exitoso');
+        // Redireccionar correctamente
         this.router.navigateByUrl('/inicio-control-de-pagos');
       },
-      error: () => {
-        alert('Credenciales incorrectas');
-      }
+      error: () => alert('Credenciales incorrectas')
     });
   }
 }

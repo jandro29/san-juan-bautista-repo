@@ -8,34 +8,26 @@ import { PagoMatriculasComponent } from './views/pago-matriculas/pago-matriculas
 export const routes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    loadComponent: () => import('./views/login/login.component').then(m => m.LoginComponent)
   },
-
   {
     path: 'inicio-control-de-pagos',
-    loadComponent: () =>
-      import('./views/inicio-control-pagos/inicio-control-pagos.component').then(
-        m => m.InicioControlPagosComponent
-      )
+    loadComponent: () => import('./views/inicio-control-pagos/inicio-control-pagos.component').then(m => m.InicioControlPagosComponent)
   },
-
   {
     path: 'estudiantes',
-    component: InternaEstudiantesComponent
+    loadComponent: () => import('./views/interna-estudiantes/interna-estudiantes.component').then(m => m.InternaEstudiantesComponent)
   },
-
   {
     path: 'mensualidades',
-    component: PagoMensualidadesComponent
+    loadComponent: () => import('./views/pago-mensualidades/pago-mensualidades.component').then(m => m.PagoMensualidadesComponent)
   },
-
   {
     path: 'matriculas',
-    component: PagoMatriculasComponent
+    loadComponent: () => import('./views/pago-matriculas/pago-matriculas.component').then(m => m.PagoMatriculasComponent)
   },
-
   {
     path: 'reportes',
-    component: ReportesComponent
+    loadComponent: () => import('./views/reportes/reportes.component').then(m => m.ReportesComponent)
   }
 ];
