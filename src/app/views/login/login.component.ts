@@ -5,11 +5,20 @@ import {
   Validators,
   FormControl,
   FormGroupDirective,
-  NgForm
+  NgForm,
+  ReactiveFormsModule,
+  FormsModule
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { RouterModule, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
+// Angular Material
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -23,6 +32,17 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule
+  ]
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -32,7 +52,7 @@ export class LoginComponent {
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
@@ -43,20 +63,15 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched(); // Muestra errores si no se llenó
+      this.loginForm.markAllAsTouched();
       return;
     }
 
     const { email, password } = this.loginForm.value;
 
-    this.http.post('https://fgfmtlvmpmiudjbufrjb.vercel.app/api/login', { email, password }).subscribe({
-      next: (res: any) => {
-        alert('Login exitoso');
-        this.router.navigate(['/inicio-control-de-pagos']); // 🔁 Redirección deseada
-      },
-      error: () => {
-        alert('Usuario o contraseña incorrectos');
-      },
+    this.http.post('https://tu-backend.vercel.app/api/login', { email, password }).subscribe({
+      next: () => this.router.navigate(['/inicio-control-de-pagos']),
+      error: () => alert('Credenciales incorrectas')
     });
   }
 }
