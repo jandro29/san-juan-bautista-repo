@@ -14,6 +14,10 @@ export const routes: Routes = [
         component: LoginComponent
     },
 
+
+    { path: 'inicio-control-de-pagos', loadComponent: () => import('./views/inicio-control-pagos/inicio-control-pagos.component').then(m => m.InicioControlPagosComponent) },
+
+
     {
         path: 'inicio-control-de-pagos',
         component: InicioControlPagosComponent
