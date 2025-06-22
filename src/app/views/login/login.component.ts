@@ -33,17 +33,16 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.css'],
   standalone: true,
   imports: [
-  CommonModule,
-  ReactiveFormsModule,
-  FormsModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatIconModule,
-  MatButtonModule,
-  HttpClientModule,
-  RouterModule  // ← ESTE es importante
-]
-
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    HttpClientModule,
+    RouterModule
+  ]
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -62,7 +61,10 @@ export class LoginComponent {
     event.stopPropagation();
   }
 
-  onSubmit() {
+  // ✅ AQUI VIENE LO NUEVO
+  onSubmit(event: Event) {
+    event.preventDefault(); // ← Esto evita la redirección a '/?'
+
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       return;
@@ -70,14 +72,14 @@ export class LoginComponent {
 
     const { email, password } = this.loginForm.value;
 
-    this.http.post('/api/login', { email, password }).subscribe({
+    this.http.post('https://san-juan-bautista.vercel.app/api/login', { email, password }).subscribe({
       next: (res: any) => {
         alert('Login exitoso');
-        // Redireccionar correctamente
         this.router.navigate(['/inicio-control-de-pagos']);
-
       },
-      error: () => alert('Credenciales incorrectas')
+      error: () => {
+        alert('Credenciales incorrectas');
+      }
     });
   }
 }

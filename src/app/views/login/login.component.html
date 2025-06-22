@@ -26,7 +26,7 @@
           </div>
 
           <!-- FORM -->
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate class="mt-[10px]">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit($event)" novalidate class="mt-[10px]">
 
             <!-- Email -->
             <div class="m-[30px]">
