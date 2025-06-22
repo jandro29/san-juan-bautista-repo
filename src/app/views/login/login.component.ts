@@ -61,25 +61,24 @@ export class LoginComponent {
     event.stopPropagation();
   }
 
-  // ✅ AQUI VIENE LO NUEVO
-  onSubmit(event: Event) {
-    event.preventDefault(); // ← Esto evita la redirección a '/?'
+ onSubmit(event: Event) {
+  event.preventDefault(); // ← Esto detiene la recarga/redirección automática
+  console.log('onSubmit ejecutado');
 
-    if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched();
-      return;
-    }
-
-    const { email, password } = this.loginForm.value;
-
-    this.http.post('https://san-juan-bautista.vercel.app/api/login', { email, password }).subscribe({
-      next: (res: any) => {
-        alert('Login exitoso');
-        this.router.navigate(['/inicio-control-de-pagos']);
-      },
-      error: () => {
-        alert('Credenciales incorrectas');
-      }
-    });
+  if (this.loginForm.invalid) {
+    this.loginForm.markAllAsTouched();
+    return;
   }
+
+  const { email, password } = this.loginForm.value;
+
+  this.http.post('/api/login', { email, password }).subscribe({
+    next: (res: any) => {
+      alert('Login exitoso');
+      this.router.navigate(['/inicio-control-de-pagos']);
+    },
+    error: () => alert('Credenciales incorrectas')
+  });
+}
+
 }

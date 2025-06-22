@@ -26,7 +26,7 @@
           </div>
 
           <!-- FORM -->
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit($event)" novalidate class="mt-[10px]">
+          <button type="button" mat-raised-button color="primary" (click)="onSubmit($event)">
 
             <!-- Email -->
             <div class="m-[30px]">
@@ -58,10 +58,11 @@
             <div class="m-[30px] mt-[-21px]">
               <section>
                 <div class="example-button-row w-[100%]">
-                  <button type="submit" mat-raised-button color="primary"
+                  <button type="button" mat-raised-button color="primary" (click)="onSubmit($event)"
                     style="width: 100%; background: #302C54; color: white;">
                     INGRESAR AL SISTEMA
                   </button>
+
                 </div>
               </section>
 
@@ -71,8 +72,8 @@
               </div>
             </div>
 
-          </form>
-          <!-- FIN FORM -->
+            </form>
+            <!-- FIN FORM -->
 
         </div>
       </div>
