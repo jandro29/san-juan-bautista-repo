@@ -70,7 +70,7 @@ export class LoginComponent {
 
     const { email, password } = this.loginForm.value;
 
-    this.http.post('https://tu-backend.vercel.app/api/login', { email, password }).subscribe({
+    this.http.post('/api/login', { email, password }).subscribe({
       next: (res: any) => {
         alert('Login exitoso');
         // Redireccionar correctamente
