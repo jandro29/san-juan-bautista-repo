@@ -10,7 +10,7 @@ import {
   FormsModule
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { RouterModule, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -44,6 +44,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     RouterModule
   ]
 })
+// ... [todos los imports sin cambios]
+
 export class LoginComponent {
   loginForm: FormGroup;
   matcher = new MyErrorStateMatcher();
@@ -67,17 +69,29 @@ export class LoginComponent {
       return;
     }
 
-    const { email, password } = this.loginForm.value;
+    // ✅ Limpiar y normalizar email y password
+    const email = this.loginForm.value.email.trim().toLowerCase();
+    const password = this.loginForm.value.password.trim();
 
-    this.http.post('/api/login', { email, password }).subscribe({
+    console.log('📤 Enviando login a la API...');
+    console.log('Email:', `"${email}"`);
+    console.log('Password:', `"${password}"`);
+
+    this.http.post('https://san-juan-bautista.vercel.app/api/login', { email, password }).subscribe({
       next: (res: any) => {
-        console.log('Login exitoso:', res);
+        console.log('✅ Login exitoso:', res);
         alert('Login exitoso');
         this.router.navigate(['/inicio-control-de-pagos']);
       },
-      error: (err) => {
-        console.error('Error al iniciar sesión:', err);
-        alert('Credenciales incorrectas');
+      error: (error: HttpErrorResponse) => {
+        console.error('❌ Error al iniciar sesión:', error);
+        if (error.status === 401) {
+          alert('Credenciales incorrectas');
+        } else if (error.status === 404) {
+          alert('No se encontró la ruta /api/login. Verifica la URL.');
+        } else {
+          alert('Error del servidor, revisa la consola para más detalles');
+        }
       }
     });
   }
