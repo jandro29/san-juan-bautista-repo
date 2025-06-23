@@ -26,16 +26,15 @@
           </div>
 
           <!-- FORM -->
-          <button type="button" mat-raised-button color="primary" (click)="onSubmit($event)">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate class="mt-[10px]">
 
             <!-- Email -->
             <div class="m-[30px]">
               <p class="text-xl text-gray-600/75 font-semibold">Usuario</p>
               <mat-form-field class="w-[100%]">
-                <!--<mat-label>Usuario</mat-label>-->
                 <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher" [ngClass]="{
-                    'border border-red-500': loginForm.get('email')?.invalid && loginForm.get('email')?.touched
-                  }" />
+                  'border border-red-500': loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+                }" />
               </mat-form-field>
             </div>
 
@@ -43,10 +42,9 @@
             <div class="m-[30px] mt-[-35px]">
               <p class="text-xl text-gray-600/75 font-semibold">Contraseña</p>
               <mat-form-field class="w-[100%]">
-                <!--<mat-label>Contraseña</mat-label>-->
                 <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" [ngClass]="{
-                    'border border-red-500': loginForm.get('password')?.invalid && loginForm.get('password')?.touched
-                  }" />
+                  'border border-red-500': loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+                }" />
                 <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
                   [attr.aria-pressed]="hide()">
                   <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
@@ -58,22 +56,20 @@
             <div class="m-[30px] mt-[-21px]">
               <section>
                 <div class="example-button-row w-[100%]">
-                  <button type="button" mat-raised-button color="primary" (click)="onSubmit($event)"
+                  <button type="submit" mat-raised-button color="primary"
                     style="width: 100%; background: #302C54; color: white;">
                     INGRESAR AL SISTEMA
                   </button>
-
                 </div>
               </section>
-
 
               <div class="mt-[10px]">
                 <p>¿Olvidó su contraseña? <span><a href="#" class="text-[#302C54]">Recuperar</a></span></p>
               </div>
             </div>
 
-            </form>
-            <!-- FIN FORM -->
+          </form>
+          <!-- FIN FORM -->
 
         </div>
       </div>

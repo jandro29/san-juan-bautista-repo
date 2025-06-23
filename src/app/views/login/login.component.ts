@@ -61,24 +61,24 @@ export class LoginComponent {
     event.stopPropagation();
   }
 
- onSubmit(event: Event) {
-  event.preventDefault(); // ← Esto detiene la recarga/redirección automática
-  console.log('onSubmit ejecutado');
+  onSubmit() {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+      return;
+    }
 
-  if (this.loginForm.invalid) {
-    this.loginForm.markAllAsTouched();
-    return;
+    const { email, password } = this.loginForm.value;
+
+    this.http.post('/api/login', { email, password }).subscribe({
+      next: (res: any) => {
+        console.log('Login exitoso:', res);
+        alert('Login exitoso');
+        this.router.navigate(['/inicio-control-de-pagos']);
+      },
+      error: (err) => {
+        console.error('Error al iniciar sesión:', err);
+        alert('Credenciales incorrectas');
+      }
+    });
   }
-
-  const { email, password } = this.loginForm.value;
-
-  this.http.post('/api/login', { email, password }).subscribe({
-    next: (res: any) => {
-      alert('Login exitoso');
-      this.router.navigate(['/inicio-control-de-pagos']);
-    },
-    error: () => alert('Credenciales incorrectas')
-  });
-}
-
 }
