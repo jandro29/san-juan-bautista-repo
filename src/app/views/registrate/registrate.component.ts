@@ -12,9 +12,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { Router } from '@angular/router'; // ✅ Importar Router
+import { Router } from '@angular/router';
 import { createClient } from '@supabase/supabase-js';
-import * as bcrypt from 'bcryptjs';
+
+// ⚠️ Ya no importamos bcrypt
+// import * as bcrypt from 'bcryptjs';
 
 const supabase = createClient(
   'https://fgfmtlvmpmiudjbufrjb.supabase.co',
@@ -40,7 +42,7 @@ export class RegistrateComponent {
   hideConfirm = true;
   registerForm: FormGroup;
 
-  private router = inject(Router); // ✅ Inyectamos el Router
+  private router = inject(Router);
 
   constructor(private fb: FormBuilder) {
     this.registerForm = this.fb.group(
@@ -77,12 +79,11 @@ export class RegistrateComponent {
     }
 
     const { correo, contraseña } = this.registerForm.value;
-    const hashedPassword = bcrypt.hashSync(contraseña, 10);
 
     const { error } = await supabase.from('usuarios').insert([
       {
         email: correo,
-        password_hash: hashedPassword
+        password_hash: contraseña // 👈 Guardar contraseña como texto plano
       }
     ]);
 
@@ -96,8 +97,7 @@ export class RegistrateComponent {
         this.registerForm.get(key)?.setErrors(null);
       });
 
-      // ✅ Redirigir al inicio
-      this.router.navigateByUrl('/'); // o '/#' si usas rutas con hash
+      this.router.navigateByUrl('/');
     }
   }
 }
