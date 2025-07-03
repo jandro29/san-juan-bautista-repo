@@ -1,0 +1,50 @@
+<div class="h-screen flex items-center justify-center bg-gray-100">
+    <div class="w-full max-w-md p-8 bg-white rounded-xl shadow-lg">
+        <form [formGroup]="registerForm" (ngSubmit)="registrarUsuario()" autocomplete="off">
+
+            <!-- Correo -->
+            <mat-label>Correo</mat-label>
+            <mat-form-field appearance="outline" class="w-full mb-6">
+
+                <input matInput formControlName="correo" autocomplete="off" />
+                <mat-error *ngIf="registerForm.get('correo')?.hasError('pattern')">
+                    Correo inválido (debe contener &#64; y .com)
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Contraseña -->
+            <mat-label>Contraseña</mat-label>
+            <mat-form-field appearance="outline" class="w-full mb-6">
+
+                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="contraseña"
+                    autocomplete="new-password" />
+                <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+                    <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                <mat-error *ngIf="registerForm.get('contraseña')?.hasError('passwordStrength')">
+                    La contraseña debe tener al menos 8 caracteres, una mayúscula y un carácter especial.
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Confirmar contraseña -->
+            <mat-label>Confirmar contraseña</mat-label>
+            <mat-form-field appearance="outline" class="w-full mb-6">
+
+                <input matInput [type]="hideConfirm ? 'password' : 'text'" formControlName="confirmarContraseña"
+                    autocomplete="new-password" />
+                <button mat-icon-button matSuffix type="button" (click)="hideConfirm = !hideConfirm">
+                    <mat-icon>{{ hideConfirm ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                <mat-error *ngIf="registerForm.errors?.['passwordsDontMatch']">
+                    Las contraseñas no coinciden.
+                </mat-error>
+            </mat-form-field>
+
+            <!-- Botón -->
+            <button mat-raised-button color="primary" class="w-full py-3 text-lg font-semibold"
+                [disabled]="registerForm.invalid">
+                Registrarse
+            </button>
+        </form>
+    </div>
+</div>

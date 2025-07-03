@@ -33,13 +33,22 @@
               <p class="text-xl text-gray-600/75 font-semibold">Usuario</p>
               <mat-form-field class="w-[100%]">
                 <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher" [ngClass]="{
-                  'border border-red-500': loginForm.get('email')?.invalid && loginForm.get('email')?.touched
-                }" />
+    'border border-red-500': loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+  }" />
+                <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+                  El correo es obligatorio
+                </mat-error>
+                <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+                  Debe ingresar un correo válido
+                </mat-error>
+                <mat-error *ngIf="loginForm.get('email')?.hasError('sinArroba')">
+                  El correo debe contener el carácter &#64;
+                </mat-error>
               </mat-form-field>
             </div>
 
             <!-- Contraseña -->
-            <div class="m-[30px] mt-[-35px]">
+            <div class="m-[30px] mt-[-1px]">
               <p class="text-xl text-gray-600/75 font-semibold">Contraseña</p>
               <mat-form-field class="w-[100%]">
                 <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" [ngClass]="{
@@ -64,7 +73,7 @@
               </section>
 
               <div class="mt-[10px]">
-                <p>¿Olvidó su contraseña? <span><a href="#" class="text-[#302C54]">Recuperar</a></span></p>
+                <a href="/registrate" class="text-[#302C54]">Registrate</a>
               </div>
             </div>
 

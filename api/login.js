@@ -7,8 +7,8 @@ const supabase = createClient(
 );
 
 const { data, error } = await supabase.from("usuarios").select("*");
-console.log("👀 Todos los usuarios:", data);
-console.log("❌ Error:", error);
+console.log(" Todos los usuarios:", data);
+console.log(" Error:", error);
 
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -19,21 +19,21 @@ export default async function handler(req, res) {
 
   const { email, password } = req.body;
 
-  console.log("🔍 Email recibido:", email);
-  console.log("🔍 Password recibido:", password);
+  console.log(" Email recibido:", email);
+  console.log(" Password recibido:", password);
 
   if (!email || !password) {
     return res.status(400).json({ message: "Faltan datos de login" });
   }
 
   const cleanedEmail = email.trim().toLowerCase().replace(/\s/g, "");
-  // 🔧 Este es el cambio crucial
+  //  Este es el cambio crucial
   const { data, error } = await supabase
     .from("usuarios")
     .select("*")
     .eq("email", cleanedEmail);
 
-  console.log("📦 Resultado Supabase:", data);
+  console.log(" Resultado Supabase:", data);
 
   if (error || !data || data.length === 0) {
     return res.status(401).json({ message: "Usuario no encontrado" });

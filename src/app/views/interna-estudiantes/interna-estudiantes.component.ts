@@ -1,54 +1,24 @@
-import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { MenuDesplegableComponent } from '../menu-desplegable/menu-desplegable.component';
 import { BarraSuperiorComponent } from '../barra-superior/barra-superior.component';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatSort, MatSortModule} from '@angular/material/sort';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { createClient } from '@supabase/supabase-js';
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
-}
-
-/** Constants used to fill up our data base. */
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
+// 🔐 Claves de Supabase
+const supabaseUrl = "https://fgfmtlvmpmiudjbufrjb.supabase.co";
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnZm10bHZtcG1pdWRqYnVmcmpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAzOTk1MTUsImV4cCI6MjA2NTk3NTUxNX0.RFIiNRunac0E1GhUwE6VKRpTNksW1y-s62GIY3DzGHA'; // tu key larga
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 @Component({
   selector: 'app-interna-estudiantes',
+  standalone: true,
   imports: [
     MenuDesplegableComponent,
     BarraSuperiorComponent,
@@ -56,54 +26,39 @@ const NAMES: string[] = [
     MatInputModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule],
+    MatPaginatorModule
+  ],
   templateUrl: './interna-estudiantes.component.html',
   styleUrl: './interna-estudiantes.component.css'
 })
-export class InternaEstudiantesComponent {
- displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
-  dataSource: MatTableDataSource<UserData>;
+export class InternaEstudiantesComponent implements OnInit, AfterViewInit {
+  displayedColumns: string[] = ['id', 'nombre', 'apellidos', 'dni', 'fecha_nacimiento', 'grado', 'apoderado'];
+  dataSource = new MatTableDataSource<any>();
 
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
-  @ViewChild(MatSort)
-  sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
-  constructor() {
-    // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
+  async ngOnInit() {
+    console.log('🚀 ngOnInit se ejecutó');
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+    const { data, error } = await supabase.from('estudiantes').select('*');
+
+    if (error) {
+      console.error('❌ Error al obtener estudiantes:', error.message);
+    } else {
+      console.log('✅ Estudiantes recibidos desde Supabase:', data);
+      this.dataSource.data = data || [];
+    }
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    console.log('📌 Paginator y Sort aplicados');
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
   }
-}
-
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-  };
 }

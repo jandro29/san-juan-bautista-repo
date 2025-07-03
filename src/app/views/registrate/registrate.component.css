@@ -1,0 +1,8 @@
+.mat-input-element {
+  padding: 1rem 0 !important; /* aumenta la altura interna */
+  font-size: 1.1rem;
+}
+
+.mat-form-field-infix {
+  min-height: 3.5rem !important; /* fuerza la altura del input */
+}
