@@ -19,6 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -41,30 +42,33 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     MatIconModule,
     MatButtonModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    MatSnackBarModule
   ]
 })
-// ... [todos los imports sin cambios]
-
 export class LoginComponent {
   loginForm: FormGroup;
   matcher = new MyErrorStateMatcher();
   hide = signal(true);
 
-
-  emailDebeContenerArrobaValidator(control: FormControl) {
-  const valor = control.value;
-  if (valor && !valor.includes('@')) {
-    return { sinArroba: true };
-  }
-  return null;
-}
-
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email, this.emailDebeContenerArrobaValidator]],
       password: ['', Validators.required]
     });
+  }
+
+  emailDebeContenerArrobaValidator(control: FormControl) {
+    const valor = control.value;
+    if (valor && !valor.includes('@')) {
+      return { sinArroba: true };
+    }
+    return null;
   }
 
   clickEvent(event: MouseEvent) {
@@ -78,29 +82,30 @@ export class LoginComponent {
       return;
     }
 
-    // Limpiar y normalizar email y password
     const email = this.loginForm.value.email.trim().toLowerCase();
     const password = this.loginForm.value.password.trim();
 
-    console.log(' Enviando login a la API...');
-    console.log('Email:', `"${email}"`);
-    console.log('Password:', `"${password}"`);
-
     this.http.post('http://localhost:3000/api/login', { email, password }).subscribe({
       next: (res: any) => {
-        console.log(' Login exitoso:', res);
-        alert('Login exitoso');
+        console.log('Login exitoso:', res);
+        this.snackBar.open('Login exitoso!', '', {
+          duration: 3000,
+          panelClass: ['snackbar-success']
+        });
         this.router.navigate(['/inicio-control-de-pagos']);
       },
       error: (error: HttpErrorResponse) => {
-        console.error(' Error al iniciar sesión:', error);
+        console.error('Error al iniciar sesión:', error);
+        let message = 'Error desconocido. Revisa la consola.';
         if (error.status === 401) {
-          alert('Credenciales incorrectas');
+          message = 'Credenciales incorrectas';
         } else if (error.status === 404) {
-          alert('No se encontró la ruta /api/login. Verifica la URL.');
-        } else {
-          alert('Error del servidor, revisa la consola para más detalles');
+          message = '⚠️ Ruta /api/login no encontrada';
         }
+        this.snackBar.open(message, 'Cerrar', {
+          duration: 4000,
+          panelClass: ['snackbar-error']
+        });
       }
     });
   }

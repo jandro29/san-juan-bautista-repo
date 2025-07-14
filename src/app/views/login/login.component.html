@@ -54,10 +54,10 @@
                 <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" [ngClass]="{
                   'border border-red-500': loginForm.get('password')?.invalid && loginForm.get('password')?.touched
                 }" />
-                <button type="button" mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
-  [attr.aria-pressed]="hide()">
-  <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
-</button>
+                <button type="button" mat-icon-button matSuffix (click)="clickEvent($event)"
+                  [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+                  <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
 
 
               </mat-form-field>

@@ -11,7 +11,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { createClient } from '@supabase/supabase-js';
 
-// 🔐 Claves de Supabase
 const supabaseUrl = "https://fgfmtlvmpmiudjbufrjb.supabase.co";
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnZm10bHZtcG1pdWRqYnVmcmpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAzOTk1MTUsImV4cCI6MjA2NTk3NTUxNX0.RFIiNRunac0E1GhUwE6VKRpTNksW1y-s62GIY3DzGHA'; // tu key larga
 const supabase = createClient(supabaseUrl, supabaseKey);
@@ -39,14 +38,14 @@ export class InternaEstudiantesComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   async ngOnInit() {
-    console.log('🚀 ngOnInit se ejecutó');
+    console.log(' ngOnInit se ejecutó');
 
     const { data, error } = await supabase.from('estudiantes').select('*');
 
     if (error) {
-      console.error('❌ Error al obtener estudiantes:', error.message);
+      console.error('#########Error al obtener estudiantes:', error.message);
     } else {
-      console.log('✅ Estudiantes recibidos desde Supabase:', data);
+      console.log('#########Estudiantes recibidos desde Supabase:', data);
       this.dataSource.data = data || [];
     }
   }
@@ -54,7 +53,7 @@ export class InternaEstudiantesComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    console.log('📌 Paginator y Sort aplicados');
+    console.log('#########Paginator y Sort aplicados');
   }
 
   applyFilter(event: Event) {

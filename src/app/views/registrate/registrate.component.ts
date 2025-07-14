@@ -15,8 +15,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { createClient } from '@supabase/supabase-js';
 
-// ⚠️ Ya no importamos bcrypt
-// import * as bcrypt from 'bcryptjs';
 
 const supabase = createClient(
   'https://fgfmtlvmpmiudjbufrjb.supabase.co',
@@ -74,7 +72,7 @@ export class RegistrateComponent {
 
   async registrarUsuario() {
     if (this.registerForm.invalid) {
-      alert('❌ Formulario inválido');
+      alert('#########Formulario inválido');
       return;
     }
 
@@ -83,14 +81,14 @@ export class RegistrateComponent {
     const { error } = await supabase.from('usuarios').insert([
       {
         email: correo,
-        password_hash: contraseña // 👈 Guardar contraseña como texto plano
+        password_hash: contraseña
       }
     ]);
 
     if (error) {
-      alert('❌ Error al registrar: ' + error.message);
+      alert('#########Error al registrar: ' + error.message);
     } else {
-      alert('✅ Usuario registrado correctamente');
+      alert('#########Usuario registrado correctamente');
 
       this.registerForm.reset();
       Object.keys(this.registerForm.controls).forEach(key => {
