@@ -1,0 +1,59 @@
+<h2 class="flex justify-center text-[30px] mt-[2rem]">Registrar Estudiante</h2>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class=" grid gap-4 mt-[1rem]">
+    <div class="flex justify-center ">
+        <div class="w-[80%] flex flex-col">
+            <div class="flex flex-row w-[100%]">
+                <div class="flex flex-col w-[100%]">
+                    <mat-label>Nombre</mat-label>
+                    <mat-form-field appearance="outline" class="w-[95%] mr-[2rem]">
+
+                        <input matInput formControlName="nombre" required />
+                    </mat-form-field>
+                </div>
+                <div class="flex flex-col w-[100%]">
+                    <mat-label>Apellido</mat-label>
+                    <mat-form-field appearance="outline" class="w-[100%]">
+
+                        <input matInput formControlName="apellidos" required />
+                    </mat-form-field>
+                </div>
+            </div>
+            <mat-label>DNI</mat-label>
+            <mat-form-field appearance="outline">
+                <input matInput type="text" maxlength="8" formControlName="dni" required
+                    (keypress)="soloNumeros($event)" (blur)="form.get('dni')?.markAsTouched()" />
+
+                <mat-error *ngIf="form.get('dni')?.touched && form.get('dni')?.hasError('required')">
+                    El DNI es obligatorio
+                </mat-error>
+
+                <mat-error *ngIf="form.get('dni')?.touched && form.get('dni')?.hasError('pattern')">
+                    El DNI debe tener exactamente 8 números
+                </mat-error>
+            </mat-form-field>
+
+            <mat-label>Fecha de nacimiento</mat-label>
+            <mat-form-field appearance="outline">
+
+                <input matInput [matDatepicker]="picker" formControlName="fecha_nacimiento" required />
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-label>Grado</mat-label>
+            <mat-form-field appearance="outline">
+
+                <input matInput formControlName="grado" />
+            </mat-form-field>
+            <mat-label>Apoderado</mat-label>
+            <mat-form-field appearance="outline">
+
+                <input matInput formControlName="apoderado" />
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+                Registrar
+            </button>
+        </div>
+    </div>
+</form>
