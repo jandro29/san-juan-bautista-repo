@@ -1,6 +1,6 @@
 
 export default {
-  basePath: '/sa-juan-bautista-repo',
+  basePath: '/',
   supportedLocales: {
   "en-US": ""
 },
