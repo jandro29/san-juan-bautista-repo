@@ -5,14 +5,14 @@ import {
   supportsScrollBehavior
 } from "./chunk-JME5XKN5.js";
 import {
+  BidiModule,
+  Directionality
+} from "./chunk-WWGE45G4.js";
+import {
   Platform,
   coerceElement,
   coerceNumberProperty
 } from "./chunk-GU44NEMW.js";
-import {
-  BidiModule,
-  Directionality
-} from "./chunk-WWGE45G4.js";
 import {
   DOCUMENT
 } from "./chunk-MJFAM2W6.js";
@@ -1958,4 +1958,4 @@ export {
   _DisposeViewRepeaterStrategy,
   SelectionModel
 };
-//# sourceMappingURL=chunk-STNWPOS5.js.map
+//# sourceMappingURL=chunk-YWKU56SN.js.map

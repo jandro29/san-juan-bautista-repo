@@ -9,7 +9,7 @@ import {
   isFakeMousedownFromScreenReader,
   isFakeTouchstartFromScreenReader,
   normalizePassiveListenerOptions
-} from "./chunk-4JN23RBX.js";
+} from "./chunk-LR55HHOZ.js";
 import {
   Platform,
   _CdkPrivateStyleLoader,
@@ -1776,10 +1776,10 @@ var MatButtonModule = class _MatButtonModule {
 
 export {
   MatRipple,
-  MatRippleModule,
   MAT_BUTTON_CONFIG,
   MatIconButton,
   MatIconAnchor,
+  MatRippleModule,
   MatButton,
   MatAnchor,
   MAT_FAB_DEFAULT_OPTIONS,
@@ -1790,4 +1790,4 @@ export {
   MatMiniFabAnchor,
   MatButtonModule
 };
-//# sourceMappingURL=chunk-O4OT47KL.js.map
+//# sourceMappingURL=chunk-7OJSXW5C.js.map

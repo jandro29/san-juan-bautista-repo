@@ -1,0 +1,5 @@
+{
+    "editor.guides.bracketPairs": true,
+    "editor.cursorBlinking": "expand",
+    "editor.wordWrap": "on"
+}
