@@ -28,5 +28,10 @@ export const routes: Routes = [
   {
     path: 'registrate',
     loadComponent: () => import('./views/registrate/registrate.component').then(m => m.RegistrateComponent)
-  }
-];
+  },
+
+   {
+    path: 'registrar-alumno',
+    loadComponent: () => import('./views/registros-tablas/estudiantes/estudiantes.component').then(m => m.EstudiantesComponent)
+    }
+  ];
