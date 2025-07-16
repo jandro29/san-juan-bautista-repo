@@ -49,8 +49,8 @@ export class EditarMatriculaComponent implements OnInit {
       .single();
 
     if (error || !data) {
-      console.error('❌ Error al obtener datos:', error?.message);
-      this.snackBar.open('❌ Error al obtener los datos de matrícula', 'Cerrar', {
+      console.error('Error al obtener datos:', error?.message);
+      this.snackBar.open('Error al obtener los datos de matrícula', 'Cerrar', {
         duration: 4000,
         panelClass: ['snackbar-error']
       });
@@ -67,13 +67,13 @@ export class EditarMatriculaComponent implements OnInit {
       .eq('id_borrar', this.id_borrar);
 
     if (error) {
-      console.error('❌ Error al actualizar matrícula:', error.message);
-      this.snackBar.open('❌ Error al actualizar matrícula', 'Cerrar', {
+      console.error('Error al actualizar matrícula:', error.message);
+      this.snackBar.open('Error al actualizar matrícula', 'Cerrar', {
         duration: 4000,
         panelClass: ['snackbar-error']
       });
     } else {
-      this.snackBar.open('✅ Matrícula actualizada correctamente', '', {
+      this.snackBar.open('Matrícula actualizada correctamente', '', {
         duration: 3000,
         panelClass: ['snackbar-success']
       });

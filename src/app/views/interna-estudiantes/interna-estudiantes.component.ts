@@ -52,7 +52,7 @@ export class InternaEstudiantesComponent implements OnInit {
     const { data, error } = await supabase.from('estudiantes').select('*');
 
     if (error) {
-      console.error('❌ Error al obtener estudiantes:', error.message);
+      console.error('Error al obtener estudiantes:', error.message);
     } else {
       this.dataSource = new MatTableDataSource(data || []);
       this.dataSource.paginator = this.paginator; // ✅ Conexión de paginador
@@ -75,11 +75,11 @@ export class InternaEstudiantesComponent implements OnInit {
       .eq('id_borrar', id_borrar);
 
     if (error) {
-      console.error('❌ Error al eliminar estudiante:', error.message);
+      console.error('Error al eliminar estudiante:', error.message);
       alert('Ocurrió un error al eliminar.');
     } else {
       this.dataSource.data = this.dataSource.data.filter(est => est.id_borrar !== id_borrar);
-      alert('✅ Estudiante eliminado correctamente.');
+      alert('Estudiante eliminado correctamente.');
     }
   }
 }

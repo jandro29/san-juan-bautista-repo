@@ -48,7 +48,7 @@ export class EstudiantesComponent {
       const formData = {
         ...this.form.value,
         fecha_nacimiento: this.formatDate(this.form.value.fecha_nacimiento),
-        id_borrar: uuidv4() // ✅ UUID generado automáticamente
+        id_borrar: uuidv4()
       };
 
       const { error } = await supabase.from('estudiantes').insert([formData]);
@@ -56,8 +56,8 @@ export class EstudiantesComponent {
       if (error) {
         alert('Error al registrar: ' + error.message);
       } else {
-        alert('✅ Estudiante registrado con éxito!');
-        this.router.navigate(['/estudiantes']); // ✅ Redirección a la tabla
+        alert('Estudiante registrado con éxito!');
+        this.router.navigate(['/estudiantes']);
       }
     }
   }

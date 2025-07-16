@@ -25,7 +25,7 @@ export class EditarEstudiantesComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private snackBar: MatSnackBar // ✅ Inyectamos MatSnackBar
+    private snackBar: MatSnackBar 
   ) {}
 
   async ngOnInit() {
@@ -38,7 +38,7 @@ export class EditarEstudiantesComponent implements OnInit {
       .single();
 
     if (error || !data) {
-      this.snackBar.open('❌ No se pudo cargar el estudiante', 'Cerrar', {
+      this.snackBar.open('No se pudo cargar el estudiante', 'Cerrar', {
         duration: 3000,
         panelClass: ['snackbar-error']
       });
@@ -62,12 +62,12 @@ export class EditarEstudiantesComponent implements OnInit {
       .eq('id_borrar', this.id_borrar);
 
     if (error) {
-      this.snackBar.open('❌ Error al actualizar', 'Cerrar', {
+      this.snackBar.open('Error al actualizar', 'Cerrar', {
         duration: 3000,
         panelClass: ['snackbar-error']
       });
     } else {
-      this.snackBar.open('✅ Estudiante actualizado correctamente', '', {
+      this.snackBar.open('Estudiante actualizado correctamente', '', {
         duration: 3000,
         panelClass: ['snackbar-success']
       });
