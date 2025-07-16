@@ -15,34 +15,32 @@ import {
   MatPseudoCheckboxModule,
   _countGroupLabelsBeforeOption,
   _getOptionScrollPosition
-} from "./chunk-IECGRMZF.js";
+} from "./chunk-CLIBVQTW.js";
 import {
   ErrorStateMatcher,
   ShowOnDirtyErrorStateMatcher,
   _ErrorStateTracker
 } from "./chunk-5AOU47TY.js";
 import {
-  MatRippleLoader
-} from "./chunk-DJKLCQLG.js";
-import {
   MAT_RIPPLE_GLOBAL_OPTIONS,
   MatRipple,
+  MatRippleLoader,
   MatRippleModule,
   RippleRef,
   RippleRenderer,
   RippleState,
   defaultRippleAnimationConfig
-} from "./chunk-4I6APAXJ.js";
+} from "./chunk-4WMIBJQW.js";
+import "./chunk-TIK7Q5Z4.js";
+import "./chunk-JXBCBRYI.js";
 import {
   _StructuralStylesLoader
 } from "./chunk-T7YC3KZZ.js";
-import "./chunk-TIK7Q5Z4.js";
-import "./chunk-2O4WY5GE.js";
-import "./chunk-JXBCBRYI.js";
 import {
   MATERIAL_SANITY_CHECKS,
   MatCommonModule
 } from "./chunk-XXWEKDAA.js";
+import "./chunk-2O4WY5GE.js";
 import "./chunk-6ZPV3RQW.js";
 import "./chunk-V367W62S.js";
 import "./chunk-TWJCPPAX.js";

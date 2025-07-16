@@ -8,14 +8,6 @@ import {
   Validators
 } from "./chunk-6YVYVT5E.js";
 import {
-  AutofillMonitor,
-  TextFieldModule
-} from "./chunk-MXPM3KH7.js";
-import {
-  ErrorStateMatcher,
-  _ErrorStateTracker
-} from "./chunk-5AOU47TY.js";
-import {
   MatFormFieldModule
 } from "./chunk-FMIMYVHW.js";
 import {
@@ -29,9 +21,16 @@ import {
   MatSuffix
 } from "./chunk-7PS52GVJ.js";
 import {
+  AutofillMonitor,
+  TextFieldModule
+} from "./chunk-MXPM3KH7.js";
+import {
+  ErrorStateMatcher,
+  _ErrorStateTracker
+} from "./chunk-5AOU47TY.js";
+import {
   getSupportedInputTypes
 } from "./chunk-TIK7Q5Z4.js";
-import "./chunk-2O4WY5GE.js";
 import {
   coerceBooleanProperty
 } from "./chunk-JXBCBRYI.js";
@@ -39,6 +38,7 @@ import {
   MatCommonModule,
   _IdGenerator
 } from "./chunk-XXWEKDAA.js";
+import "./chunk-2O4WY5GE.js";
 import "./chunk-6ZPV3RQW.js";
 import "./chunk-V367W62S.js";
 import {

@@ -30,8 +30,24 @@ export const routes: Routes = [
     loadComponent: () => import('./views/registrate/registrate.component').then(m => m.RegistrateComponent)
   },
 
-   {
+  {
     path: 'registrar-alumno',
     loadComponent: () => import('./views/registros-tablas/estudiantes/estudiantes.component').then(m => m.EstudiantesComponent)
-    }
-  ];
+  },
+  {
+    path: 'editar-estudiante/:id_borrar',
+    loadComponent: () => import('./views/registros-tablas/editar-estudiantes/editar-estudiantes.component').then(m => m.EditarEstudiantesComponent)
+  },
+
+   {
+    path: 'registrar-matricula',
+    loadComponent: () => import('./views/registros-tablas/crear-matricula/crear-matricula.component').then(m => m.CrearMatriculaComponent)
+  },
+
+  {
+    path: 'editar-matricula/:id_borrar',
+    loadComponent: () => import('./views/registros-tablas/editar-matricula/editar-matricula.component').then(m => m.EditarMatriculaComponent)
+  }
+
+
+];

@@ -1,0 +1,28 @@
+<div class="max-w-xl mx-auto mt-10 p-4 bg-white shadow rounded">
+  <h2 class="text-xl font-bold mb-4">Editar Matrícula</h2>
+
+  <form [formGroup]="form" (ngSubmit)="actualizarMatricula()">
+
+    <label>Año Lectivo ID</label>
+    <input type="text" formControlName="anio_lectivo" class="border p-2 w-full mb-2" />
+
+    <label>Monto</label>
+    <input type="number" formControlName="monto" class="border p-2 w-full mb-2" />
+
+    <label>Fecha de Pago</label>
+    <input type="date" formControlName="fecha_pago" class="border p-2 w-full mb-2" />
+
+    <label>Fecha de Vencimiento</label>
+    <input type="date" formControlName="fecha_vencimiento" class="border p-2 w-full mb-2" />
+
+    <label>¿Pagado?</label>
+    <select formControlName="pagado" class="border p-2 w-full mb-4">
+      <option value="true">Sí</option>
+      <option value="false">No</option>
+    </select>
+
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Guardar Cambios
+    </button>
+  </form>
+</div>

@@ -10,11 +10,11 @@ import {
   _ViewRepeaterOperation,
   isDataSource
 } from "./chunk-7STOV5MP.js";
-import "./chunk-2O4WY5GE.js";
 import "./chunk-JXBCBRYI.js";
 import {
   MatCommonModule
 } from "./chunk-XXWEKDAA.js";
+import "./chunk-2O4WY5GE.js";
 import {
   Directionality
 } from "./chunk-6ZPV3RQW.js";

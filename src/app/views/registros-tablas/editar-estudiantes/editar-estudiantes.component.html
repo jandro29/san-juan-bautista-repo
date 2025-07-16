@@ -1,0 +1,39 @@
+<div class="p-8 max-w-xl mx-auto bg-white shadow rounded">
+  <h2 class="text-2xl font-bold mb-6 text-center">Editar Estudiante</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="form">
+    <div class="mb-4">
+      <label class="block mb-1">Nombre</label>
+      <input class="w-full p-2 border rounded" formControlName="nombre" />
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1">Apellidos</label>
+      <input class="w-full p-2 border rounded" formControlName="apellidos" />
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1">DNI</label>
+      <input class="w-full p-2 border rounded" formControlName="dni" />
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1">Fecha de Nacimiento</label>
+      <input type="date" class="w-full p-2 border rounded" formControlName="fecha_nacimiento" />
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1">Grado</label>
+      <input class="w-full p-2 border rounded" formControlName="grado" />
+    </div>
+
+    <div class="mb-6">
+      <label class="block mb-1">Apoderado</label>
+      <input class="w-full p-2 border rounded" formControlName="apoderado" />
+    </div>
+
+    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+      Guardar Cambios
+    </button>
+  </form>
+</div>

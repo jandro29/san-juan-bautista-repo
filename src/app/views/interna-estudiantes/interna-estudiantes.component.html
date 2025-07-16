@@ -2,88 +2,106 @@
     <app-barra-superior></app-barra-superior>
 
     <div class="flex">
-        <app-menu-desplegable>
-        </app-menu-desplegable>
+        <app-menu-desplegable></app-menu-desplegable>
 
-        <div class="flex h-screen w-full bg-[#DBE0E6]  flex items-center justify-center">
-            <div class=" bg-[#F6F5FF] w-[950px]">
+        <div class="flex h-screen w-full bg-[#DBE0E6] flex  justify-center">
+            <div class="bg-[#F6F5FF] w-[950px]">
                 <div class="m-[20px]">
                     <div class="flex flex-row">
                         <div class="grid grid-cols-6 gap-4">
-                    <p class=" text-[48px] font-bold col-start-1 col-end-3">ESTUDIANTES</p>
-                    <a href="/registrar-alumno" class="col-span-2 col-end-7 bg-[#1E1B44] flex items-center justify-center">
-                        <button class="cursor-pointer text-white">Registrar Estudiante</button>
-                    </a>
+                            <p class="text-[48px] font-bold col-start-1 col-end-3">ESTUDIANTES</p>
+                            <a href="/registrar-alumno"
+                                class="col-span-2 col-end-7 bg-[#1E1B44] flex items-center justify-center">
+                                <button class="cursor-pointer text-white">Registrar Estudiante</button>
+                            </a>
+                        </div>
                     </div>
-                    </div>
-                    <div class="flex w-[100%] mt-[40px] grid ">
-                        <div class="flex w-[100%] flex-col">
+
+                    <div class="flex w-full mt-10 grid">
+                        <div class="flex w-full flex-col">
                             <mat-form-field>
                                 <mat-label>Filter</mat-label>
-                                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+                                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input />
                             </mat-form-field>
 
                             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
                                 aria-label="Select page of users"></mat-paginator>
-                            <div class="h-[370px] overflow-y-auto">
-                                <div class="mat-elevation-z8  flex w-[100%]">
-                                    <table mat-table [dataSource]="dataSource" matSort>
 
+                            <!-- Scroll solo para la tabla -->
+                            <div class="max-h-[300px] overflow-y-auto">
+                                <div class="mat-elevation-z8 w-full">
+                                    <table mat-table [dataSource]="dataSource" matSort class="w-full">
+
+                                        <!-- ID -->
                                         <ng-container matColumnDef="id">
                                             <th mat-header-cell *matHeaderCellDef> ID </th>
                                             <td mat-cell *matCellDef="let row"> {{ row.id }} </td>
                                         </ng-container>
 
+                                        <!-- Nombre -->
                                         <ng-container matColumnDef="nombre">
                                             <th mat-header-cell *matHeaderCellDef> Nombre </th>
                                             <td mat-cell *matCellDef="let row"> {{ row.nombre }} </td>
                                         </ng-container>
 
+                                        <!-- Apellidos -->
                                         <ng-container matColumnDef="apellidos">
                                             <th mat-header-cell *matHeaderCellDef> Apellidos </th>
                                             <td mat-cell *matCellDef="let row"> {{ row.apellidos }} </td>
                                         </ng-container>
 
+                                        <!-- DNI -->
                                         <ng-container matColumnDef="dni">
                                             <th mat-header-cell *matHeaderCellDef> DNI </th>
                                             <td mat-cell *matCellDef="let row"> {{ row.dni }} </td>
                                         </ng-container>
 
+                                        <!-- Fecha de Nacimiento -->
                                         <ng-container matColumnDef="fecha_nacimiento">
                                             <th mat-header-cell *matHeaderCellDef> Fecha Nacimiento </th>
                                             <td mat-cell *matCellDef="let row"> {{ row.fecha_nacimiento }} </td>
                                         </ng-container>
 
+                                        <!-- Grado -->
                                         <ng-container matColumnDef="grado">
                                             <th mat-header-cell *matHeaderCellDef> Grado </th>
                                             <td mat-cell *matCellDef="let row"> {{ row.grado }} </td>
                                         </ng-container>
 
+                                        <!-- Apoderado -->
                                         <ng-container matColumnDef="apoderado">
                                             <th mat-header-cell *matHeaderCellDef> Apoderado </th>
                                             <td mat-cell *matCellDef="let row"> {{ row.apoderado }} </td>
                                         </ng-container>
 
+                                        <!-- Acciones -->
+                                        <ng-container matColumnDef="acciones">
+                                            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                                            <td mat-cell *matCellDef="let row">
+                                                <a [routerLink]="['/editar-estudiante', row.id_borrar]"
+                                                    class="text-blue-600 font-bold hover:underline mr-4">
+                                                    Editar
+                                                </a>
+
+                                                <button (click)="eliminarEstudiante(row.id_borrar)"
+                                                    class="text-red-600 font-bold hover:underline">
+                                                    Eliminar
+                                                </button>
+                                            </td>
+                                        </ng-container>
+
+                                        <!-- Cabeceras y filas -->
                                         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-
                                     </table>
                                 </div>
                             </div>
+                            <!-- Fin tabla con scroll -->
                         </div>
-
-
-
                     </div>
-
 
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
 </section>
