@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/views/interna-estudiantes/interna-estudiantes.component.css"],
-  "sourcesContent": ["table {\r\n  width: 100%;\r\n}\r\n\r\n.mat-mdc-form-field {\r\n  font-size: 14px;\r\n  width: 100%;\r\n}\r\n\r\ntd, th {\r\n  width: 25%;\r\n}"],
-  "mappings": ";AAAA;AACE,SAAA;AACF;AAEA,CAAA;AACE,aAAA;AACA,SAAA;AACF;AAEA;AAAA;AACE,SAAA;AACF;",
-  "names": []
-}
