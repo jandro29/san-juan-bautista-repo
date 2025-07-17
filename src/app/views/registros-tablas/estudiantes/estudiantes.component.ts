@@ -9,6 +9,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { NgIf } from '@angular/common';
 
 
 const supabaseUrl = "https://fgfmtlvmpmiudjbufrjb.supabase.co";
@@ -27,7 +28,8 @@ const supabase = createClient(supabaseUrl, supabaseKey);
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
-    CommonModule
+    CommonModule,
+    NgIf
   ]
 })
 export class EstudiantesComponent {
