@@ -1,92 +1,48 @@
-<div class="w-full h-screen">
-  <div class="flex columns-2 h-screen h-full">
+<div class="login-container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
 
-    <!-- LOTTIFY -->
-    <div class="w-[50%] h-screen bg-white flex items-center justify-center">
-      <iframe class="w-[600px] h-[600px]"
-        src="https://lottie.host/embed/ee7b8b6a-b6fd-493b-96a3-4537050dbcc4/FWKx5648dO.lottie"></iframe>
+    <!-- Email -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Correo electrónico</mat-label>
+      <input matInput
+             type="email"
+             formControlName="email"
+             [errorStateMatcher]="matcher"
+             required>
+      <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+        El correo es obligatorio
+      </mat-error>
+      <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+        Ingresa un correo válido
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Contraseña -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Contraseña</mat-label>
+      <input matInput
+             [type]="hide ? 'password' : 'text'"
+             formControlName="password"
+             [errorStateMatcher]="matcher"
+             required>
+      <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+        <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+      <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+        La contraseña es obligatoria
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Botón de Iniciar sesión -->
+    <button mat-raised-button color="primary" type="submit" class="full-width">
+      Iniciar sesión
+    </button>
+
+    <!-- Botón de Registro -->
+    <div class="register-link">
+      <span>¿No tienes una cuenta?</span>
+      <a routerLink="/register">Regístrate</a>
     </div>
 
-    <!-- FORMULARIO -->
-    <div class="w-[50%] h-screen bg-[#EBEFF5] h-full flex justify-center items-center">
-      <div class="flex grid grid-cols-1">
-        <div class="flex justify-center">
-          <h4 class="text-[30px] font-bold text-[#302C54]">Pantalla de Login</h4>
-        </div>
-
-        <div class="w-[400px] bg-white h-[450px] m-0 rounded-lg mt-[50px]">
-
-          <div class="w-full h-[80px] bg-[#302C54] flex items-center grid grid-cols-1 rounded-tl-lg rounded-tr-lg">
-            <p class="flex justify-center items-center text-white w-full text-center">
-              ESCUELA SAN JUAN BAUTISTA
-            </p>
-            <p class="flex justify-center items-center text-white w-full text-center">
-              Sistema de Control de Pagos
-            </p>
-          </div>
-
-          <!-- FORM -->
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate class="mt-[10px]">
-
-            <!-- Email -->
-            <div class="m-[30px]">
-              <p class="text-xl text-gray-600/75 font-semibold">Usuario</p>
-              <mat-form-field class="w-[100%]">
-                <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher" [ngClass]="{
-    'border border-red-500': loginForm.get('email')?.invalid && loginForm.get('email')?.touched
-  }" />
-                <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
-                  El correo es obligatorio
-                </mat-error>
-                <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
-                  Debe ingresar un correo válido
-                </mat-error>
-                <mat-error *ngIf="loginForm.get('email')?.hasError('sinArroba')">
-                  El correo debe contener el carácter &#64;
-                </mat-error>
-              </mat-form-field>
-            </div>
-
-            <!-- Contraseña -->
-            <div class="m-[30px] mt-[-1px]">
-              <p class="text-xl text-gray-600/75 font-semibold">Contraseña</p>
-              <mat-form-field class="w-[100%]">
-                <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" [ngClass]="{
-                  'border border-red-500': loginForm.get('password')?.invalid && loginForm.get('password')?.touched
-                }" />
-                <button type="button" mat-icon-button matSuffix (click)="clickEvent($event)"
-                  [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
-                  <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-
-                </button>
-
-
-              </mat-form-field>
-            </div>
-
-            <!-- Botón -->
-            <div class="m-[30px] mt-[-21px]">
-              <section>
-                <div class="example-button-row w-[100%]">
-                  <button type="submit" mat-raised-button color="primary"
-                    style="width: 100%; background: #302C54; color: white;">
-                    INGRESAR AL SISTEMA
-                  </button>
-                </div>
-              </section>
-
-              <div class="mt-[10px]">
-                <a href="/registrate" class="text-[#302C54]">Registrate</a>
-              </div>
-            </div>
-
-          </form>
-          <!-- FIN FORM -->
-
-        </div>
-      </div>
-    </div>
-    <!-- FIN FORMULARIO -->
-
-  </div>
+  </form>
 </div>
