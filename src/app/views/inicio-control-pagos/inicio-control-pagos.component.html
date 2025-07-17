@@ -1,57 +1,285 @@
 <section class="contenedor w-full h-screen overflow-hidden relative">
-    <app-barra-superior></app-barra-superior>
+  <app-barra-superior></app-barra-superior>
 
-    <div class="flex">
-        <app-menu-desplegable>
-        </app-menu-desplegable>
+  <div class="flex">
+    <app-menu-desplegable></app-menu-desplegable>
 
-        <div class="flex h-screen w-full bg-[#DBE0E6]  flex items-center justify-center">
-            <div class=" bg-[#F6F5FF] w-[750px]">
-                <div class="m-[20px]">
-                    <p class="border-b-4 divide-[#434054] text-[48px] font-bold">PANEL DE CONTROL</p>
-                    <div class="flex justify-center mt-[40px]">
-                        <p class="text-[20px] text-center">
-                            Bienvenido! Accediste al Sistema Control
-                            de pagos de matrículas y mensualidades
-                        </p>
-
-                    </div>
-
-                    <div class="flex justify-between mt-[40px] mb-[40px]">
-
-                        <a href=""
-                            class="flex bg-[#5F4BD8] rounded-xl w-[200px] h-[200px] grid justify-center items-center">
-                            <div class="flex justify-center items-center h-full mt-[15px]">
-                                <img src="assets/img/estudiantes.png" class="w-[110px]">
-                            </div>
-                            <p class="flex justify-center text-[20px] text-white"> Estudiantes</p>
-
-                        </a>
-
-                        <a href=""
-                            class="flex bg-[#4070F4] rounded-xl w-[200px] h-[200px] grid justify-center items-center">
-                            <div class="flex justify-center items-center h-full mt-[15px]">
-                                <img src="assets/img/pensiones.png" class="">
-                            </div>
-                            <p class="flex justify-center text-[20px] text-white"> Pensiones</p>
-
-                        </a>
-
-                        <a href=""
-                            class="flex bg-[#90A4FB] rounded-xl w-[200px] h-[200px] grid justify-center items-center">
-                            <div class="flex justify-center items-center h-full mt-[15px]">
-                                <img src="assets/img/reportes.png" class="w-[70px]">
-                            </div>
-                            <p class="flex justify-center text-[20px] text-white"> Reportes</p>
-
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <div class="flex-1 h-screen bg-[#DBE0E6] overflow-y-auto">
+      <div class="p-6">
+        <!-- Header del Dashboard -->
+        <div class="bg-[#F6F5FF] rounded-xl shadow-lg mb-6 p-6">
+          <h1
+            class="text-4xl font-bold text-[#434054] border-b-4 border-[#434054] pb-2 mb-4"
+          >
+            PANEL DE CONTROL
+          </h1>
+          <p class="text-xl text-center text-[#666] mt-4">
+            Bienvenido! Accediste al Sistema Control de pagos de matrículas y
+            mensualidades
+          </p>
         </div>
+
+        <!-- Métricas Principales -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <div
+            class="bg-gradient-to-r from-[#5F4BD8] to-[#7B68EE] rounded-xl p-6 text-white shadow-lg hover:shadow-xl transition-shadow"
+          >
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm opacity-90">Ingresos Totales</p>
+                <p class="text-3xl font-bold">S/ 240,758.00</p>
+                <p class="text-xs opacity-75 mt-1">↗ +15% vs mes anterior</p>
+              </div>
+              <div class="text-4xl opacity-80">💰</div>
+            </div>
+            <div class="mt-4 bg-white bg-opacity-20 rounded-full h-2">
+              <div class="bg-white h-2 rounded-full" style="width: 75%"></div>
+            </div>
+          </div>
+
+          <div
+            class="bg-gradient-to-r from-[#4070F4] to-[#5B8DEF] rounded-xl p-6 text-white shadow-lg hover:shadow-xl transition-shadow"
+          >
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm opacity-90">Egresos Totales</p>
+                <p class="text-3xl font-bold">S/ 198,900.00</p>
+                <p class="text-xs opacity-75 mt-1">↘ -5% vs mes anterior</p>
+              </div>
+              <div class="text-4xl opacity-80">📊</div>
+            </div>
+            <div class="mt-4 bg-white bg-opacity-20 rounded-full h-2">
+              <div class="bg-white h-2 rounded-full" style="width: 65%"></div>
+            </div>
+          </div>
+
+          <div
+            class="bg-gradient-to-r from-[#90A4FB] to-[#A8B6FF] rounded-xl p-6 text-white shadow-lg hover:shadow-xl transition-shadow"
+          >
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm opacity-90">Balance Neto</p>
+                <p class="text-3xl font-bold">S/ 41,858.00</p>
+                <p class="text-xs opacity-75 mt-1">↗ +8% vs mes anterior</p>
+              </div>
+              <div class="text-4xl opacity-80">📈</div>
+            </div>
+            <div class="mt-4 bg-white bg-opacity-20 rounded-full h-2">
+              <div class="bg-white h-2 rounded-full" style="width: 85%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Estadísticas Rápidas -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+          <div
+            class="bg-white rounded-xl p-4 shadow-md text-center hover:shadow-lg transition-shadow"
+          >
+            <div class="text-3xl font-bold text-[#51cf66]">6,500</div>
+            <div class="text-sm text-gray-600">Pagos Confirmados</div>
+            <div
+              class="mt-2 inline-block bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs"
+            >
+              ✓ Al día
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-xl p-4 shadow-md text-center hover:shadow-lg transition-shadow"
+          >
+            <div class="text-3xl font-bold text-[#ffd43b]">500</div>
+            <div class="text-sm text-gray-600">Pagos Pendientes</div>
+            <div
+              class="mt-2 inline-block bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs"
+            >
+              ⚠ Pendiente
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-xl p-4 shadow-md text-center hover:shadow-lg transition-shadow"
+          >
+            <div class="text-3xl font-bold text-[#ff6b6b]">85</div>
+            <div class="text-sm text-gray-600">Pagos Atrasados</div>
+            <div
+              class="mt-2 inline-block bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs"
+            >
+              ⚠ Atrasado
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-xl p-4 shadow-md text-center hover:shadow-lg transition-shadow"
+          >
+            <div class="text-3xl font-bold text-[#5F4BD8]">1,250</div>
+            <div class="text-sm text-gray-600">Estudiantes Activos</div>
+            <div
+              class="mt-2 inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs"
+            >
+              ✓ Activo
+            </div>
+          </div>
+        </div>
+
+        <!-- Secciones Principales (Botones originales mejorados) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <a href="/estudiantes" class="group">
+            <div
+              class="bg-gradient-to-br from-[#5F4BD8] to-[#7B68EE] rounded-xl p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            >
+              <div class="flex flex-col items-center">
+                <div class="mb-4 p-4 bg-white bg-opacity-20 rounded-full">
+                  <img
+                    src="assets/img/estudiantes.png"
+                    class="w-16 h-16"
+                    alt="Estudiantes"
+                  />
+                </div>
+                <h3 class="text-xl font-bold mb-2">Estudiantes</h3>
+                <p class="text-sm opacity-90 text-center">
+                  Gestionar información de estudiantes
+                </p>
+                <div
+                  class="mt-3 text-sm bg-white bg-opacity-20 px-3 py-1 rounded-full"
+                >
+                  1,250 registrados
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a href="/mensualidades" class="group">
+            <div
+              class="bg-gradient-to-br from-[#4070F4] to-[#5B8DEF] rounded-xl p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            >
+              <div class="flex flex-col items-center">
+                <div class="mb-4 p-4 bg-white bg-opacity-20 rounded-full">
+                  <img
+                    src="assets/img/pensiones.png"
+                    class="w-16 h-16"
+                    alt="Pensiones"
+                  />
+                </div>
+                <h3 class="text-xl font-bold mb-2">Pensiones</h3>
+                <p class="text-sm opacity-90 text-center">
+                  Control de pagos mensuales
+                </p>
+                <div
+                  class="mt-3 text-sm bg-white bg-opacity-20 px-3 py-1 rounded-full"
+                >
+                  6,500 pagos
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a href="/reportes" class="group">
+            <div
+              class="bg-gradient-to-br from-[#90A4FB] to-[#A8B6FF] rounded-xl p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            >
+              <div class="flex flex-col items-center">
+                <div class="mb-4 p-4 bg-white bg-opacity-20 rounded-full">
+                  <img
+                    src="assets/img/reportes.png"
+                    class="w-12 h-12"
+                    alt="Reportes"
+                  />
+                </div>
+                <h3 class="text-xl font-bold mb-2">Reportes</h3>
+                <p class="text-sm opacity-90 text-center">
+                  Análisis y estadísticas
+                </p>
+                <div
+                  class="mt-3 text-sm bg-white bg-opacity-20 px-3 py-1 rounded-full"
+                >
+                  Ver análisis
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Gráfico de Ingresos -->
+        <div class="bg-white rounded-xl p-6 shadow-lg mb-6">
+          <h3 class="text-xl font-bold text-[#434054] mb-4">
+            Ingresos Mensuales
+          </h3>
+          <div
+            class="h-64 bg-gradient-to-r from-[#f8f9fa] to-[#e9ecef] rounded-lg flex items-center justify-center"
+          >
+            <div class="text-center text-gray-500">
+              <div class="text-6xl mb-4">📊</div>
+              <p class="text-lg">Gráfico de Ingresos</p>
+              <p class="text-sm">Aquí se mostraría el gráfico interactivo</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actividad Reciente -->
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <h3 class="text-xl font-bold text-[#434054] mb-4">
+            Actividad Reciente
+          </h3>
+          <div class="space-y-4">
+            <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+              <div
+                class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4"
+              >
+                <span class="text-green-600 font-bold">💰</span>
+              </div>
+              <div class="flex-1">
+                <p class="font-semibold">Pago de Pensión - Marzo</p>
+                <p class="text-sm text-gray-600">
+                  Servicio educativo - hace 2 horas
+                </p>
+              </div>
+              <div
+                class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold"
+              >
+                S/ 450.00
+              </div>
+            </div>
+
+            <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+              <div
+                class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4"
+              >
+                <span class="text-blue-600 font-bold">📝</span>
+              </div>
+              <div class="flex-1">
+                <p class="font-semibold">Nueva Matrícula Registrada</p>
+                <p class="text-sm text-gray-600">
+                  Santiago Wallon - hace 4 horas
+                </p>
+              </div>
+              <div
+                class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold"
+              >
+                S/ 200.00
+              </div>
+            </div>
+
+            <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+              <div
+                class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4"
+              >
+                <span class="text-yellow-600 font-bold">⚠️</span>
+              </div>
+              <div class="flex-1">
+                <p class="font-semibold">Pago Pendiente</p>
+                <p class="text-sm text-gray-600">
+                  Mensualidad de Noviembre - hace 1 día
+                </p>
+              </div>
+              <div
+                class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold"
+              >
+                Pendiente
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-
-
-
+  </div>
 </section>
