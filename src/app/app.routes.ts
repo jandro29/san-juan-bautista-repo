@@ -34,18 +34,18 @@ export const routes: Routes = [
     path: 'registrar-alumno',
     loadComponent: () => import('./views/registros-tablas/estudiantes/estudiantes.component').then(m => m.EstudiantesComponent)
   },
-  {
+  /*{
     path: 'editar-estudiante/:id_borrar',
     loadComponent: () => import('./views/registros-tablas/editar-estudiantes/editar-estudiantes.component').then(m => m.EditarEstudiantesComponent),
     data: {
     renderMode: 'no-prerender'
   }
-  },
+  },*/
 
    {
     path: 'registrar-matricula',
     loadComponent: () => import('./views/registros-tablas/crear-matricula/crear-matricula.component').then(m => m.CrearMatriculaComponent)
-  },
+  }/*,
 
   {
     path: 'editar-matricula/:id_borrar',
@@ -53,7 +53,7 @@ export const routes: Routes = [
      data: {
     renderMode: 'no-prerender'
   }
-  }
+  }*/
 
 
 ];
