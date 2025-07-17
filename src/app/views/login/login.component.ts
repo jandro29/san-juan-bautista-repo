@@ -76,7 +76,10 @@ export class LoginComponent {
     event.stopPropagation();
   }
 
-  onSubmit() {
+  onSubmit(event: Event) {
+    event.preventDefault(); 
+
+
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       return;
@@ -85,6 +88,7 @@ export class LoginComponent {
     const email = this.loginForm.value.email.trim().toLowerCase();
     const password = this.loginForm.value.password.trim();
 
+    
     this.http.post('http://localhost:3000/api/login', { email, password }).subscribe({
       next: (res: any) => {
         console.log('Login exitoso:', res);
