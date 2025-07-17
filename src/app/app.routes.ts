@@ -36,7 +36,10 @@ export const routes: Routes = [
   },
   {
     path: 'editar-estudiante/:id_borrar',
-    loadComponent: () => import('./views/registros-tablas/editar-estudiantes/editar-estudiantes.component').then(m => m.EditarEstudiantesComponent)
+    loadComponent: () => import('./views/registros-tablas/editar-estudiantes/editar-estudiantes.component').then(m => m.EditarEstudiantesComponent),
+    data: {
+    renderMode: 'no-prerender'
+  }
   },
 
    {
@@ -46,7 +49,10 @@ export const routes: Routes = [
 
   {
     path: 'editar-matricula/:id_borrar',
-    loadComponent: () => import('./views/registros-tablas/editar-matricula/editar-matricula.component').then(m => m.EditarMatriculaComponent)
+    loadComponent: () => import('./views/registros-tablas/editar-matricula/editar-matricula.component').then(m => m.EditarMatriculaComponent),
+     data: {
+    renderMode: 'no-prerender'
+  }
   }
 
 
