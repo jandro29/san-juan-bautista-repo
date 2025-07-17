@@ -30,7 +30,6 @@ export class LoginComponent {
 
     const { email, password } = this.form.value;
 
-    // ✅ Aquí está la URL corregida
     this.http.post('https://sjb-backend.onrender.com/api/login', { email, password }).subscribe({
       next: (res: any) => {
         console.log('Login exitoso:', res);
@@ -40,7 +39,6 @@ export class LoginComponent {
           panelClass: ['snackbar-success']
         });
 
-        // ✅ Redirige al dashboard o componente principal
         this.router.navigate(['/inicio-control-de-pagos']);
       },
       error: (error: HttpErrorResponse) => {
