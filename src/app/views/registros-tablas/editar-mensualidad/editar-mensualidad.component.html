@@ -1,4 +1,14 @@
 <div class="p-8 max-w-xl mx-auto bg-white shadow rounded">
+  <a href="/mensualidades">
+    <button class="absolute top-4 left-4 flex items-center text-blue-600 hover:text-blue-800">
+      <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+      </svg>
+      Volver
+    </button>
+  </a>
+
   <h2 class="text-2xl font-bold mb-6 text-center">Editar Mensualidad</h2>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="form">
@@ -14,7 +24,9 @@
 
     <div class="mb-4">
       <label class="block mb-1">Mes</label>
-      <input class="w-full p-2 border rounded" formControlName="mes" />
+      <select formControlName="mes" class="w-full p-2 border rounded">
+          <option *ngFor="let m of meses" [value]="m">{{ m }}</option>
+        </select>
     </div>
 
     <div class="mb-4">
@@ -22,14 +34,16 @@
       <input type="number" class="w-full p-2 border rounded" formControlName="monto" />
     </div>
 
-    <div class="mb-4">
-      <label class="block mb-1">Fecha de Pago</label>
-      <input type="date" class="w-full p-2 border rounded" formControlName="fecha_pago" />
-    </div>
-
-    <div class="mb-4">
-      <label class="block mb-1">Fecha de Vencimiento</label>
-      <input type="date" class="w-full p-2 border rounded" formControlName="fecha_vencimiento" />
+    <!-- Agrupación de Fecha de Pago y Fecha de Vencimiento -->
+    <div class="mb-4 flex gap-4">
+      <div class="w-1/2">
+        <label class="block mb-1">Fecha de Pago</label>
+        <input type="date" class="w-full p-2 border rounded" formControlName="fecha_pago" />
+      </div>
+      <div class="w-1/2">
+        <label class="block mb-1">Fecha de Vencimiento</label>
+        <input type="date" class="w-full p-2 border rounded" formControlName="fecha_vencimiento" />
+      </div>
     </div>
 
     <div class="mb-4">

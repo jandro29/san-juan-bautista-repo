@@ -11,6 +11,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { createClient } from '@supabase/supabase-js';
 import { RouterModule } from '@angular/router';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 const supabaseUrl = "https://fgfmtlvmpmiudjbufrjb.supabase.co";
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnZm10bHZtcG1pdWRqYnVmcmpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAzOTk1MTUsImV4cCI6MjA2NTk3NTUxNX0.RFIiNRunac0E1GhUwE6VKRpTNksW1y-s62GIY3DzGHA';
@@ -48,6 +49,11 @@ export class InternaEstudiantesComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+
+  constructor(
+
+    private snackBar: MatSnackBar
+  ) {}
   async ngOnInit() {
     const { data, error } = await supabase.from('estudiantes').select('*');
 
@@ -55,8 +61,8 @@ export class InternaEstudiantesComponent implements OnInit {
       console.error('Error al obtener estudiantes:', error.message);
     } else {
       this.dataSource = new MatTableDataSource(data || []);
-      this.dataSource.paginator = this.paginator; // ✅ Conexión de paginador
-      this.dataSource.sort = this.sort;           // ✅ Conexión de ordenamiento
+      this.dataSource.paginator = this.paginator; 
+      this.dataSource.sort = this.sort;           
     }
   }
 
@@ -76,10 +82,10 @@ export class InternaEstudiantesComponent implements OnInit {
 
     if (error) {
       console.error('Error al eliminar estudiante:', error.message);
-      alert('Ocurrió un error al eliminar.');
+      this.snackBar.open('Ocurrió un error al eliminar.', 'Cerrar', { duration: 7000 });
     } else {
       this.dataSource.data = this.dataSource.data.filter(est => est.id_borrar !== id_borrar);
-      alert('Estudiante eliminado correctamente.');
+     this.snackBar.open('Estudiante eliminado correctamente.', 'Cerrar', { duration: 3000 });
     }
   }
 }

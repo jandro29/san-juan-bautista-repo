@@ -12,9 +12,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { createClient } from '@supabase/supabase-js';
-
 
 const supabase = createClient(
   'https://fgfmtlvmpmiudjbufrjb.supabase.co',
@@ -30,7 +30,8 @@ const supabase = createClient(
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule
   ],
   templateUrl: './registrate.component.html',
   styleUrl: './registrate.component.css'
@@ -41,6 +42,7 @@ export class RegistrateComponent {
   registerForm: FormGroup;
 
   private router = inject(Router);
+  private snackBar = inject(MatSnackBar);
 
   constructor(private fb: FormBuilder) {
     this.registerForm = this.fb.group(
@@ -72,7 +74,7 @@ export class RegistrateComponent {
 
   async registrarUsuario() {
     if (this.registerForm.invalid) {
-      alert('#########Formulario inválido');
+      this.snackBar.open('Formulario inválido', 'Cerrar', { duration: 3000 });
       return;
     }
 
@@ -86,9 +88,9 @@ export class RegistrateComponent {
     ]);
 
     if (error) {
-      alert('#########Error al registrar: ' + error.message);
+      this.snackBar.open(`Error al registrar: ${error.message}`, 'Cerrar', { duration: 5000 });
     } else {
-      alert('#########Usuario registrado correctamente');
+      this.snackBar.open('Usuario registrado correctamente', 'Cerrar', { duration: 3000 });
 
       this.registerForm.reset();
       Object.keys(this.registerForm.controls).forEach(key => {

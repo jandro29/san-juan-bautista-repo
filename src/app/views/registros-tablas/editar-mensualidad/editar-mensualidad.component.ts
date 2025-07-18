@@ -20,13 +20,16 @@ const supabase = createClient(
 export class EditarMensualidadComponent implements OnInit {
   form!: FormGroup;
   id_borrar!: string;
-
+  meses: string[] = [
+    'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+    'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+  ];
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   async ngOnInit() {
     this.id_borrar = this.route.snapshot.paramMap.get('id_borrar') || '';

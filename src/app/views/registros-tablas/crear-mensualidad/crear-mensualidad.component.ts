@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { createClient } from '@supabase/supabase-js';
 import { Router } from '@angular/router';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 const supabase = createClient(
   'https://fgfmtlvmpmiudjbufrjb.supabase.co',
@@ -12,7 +13,7 @@ const supabase = createClient(
 @Component({
   selector: 'app-crear-mensualidad',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MatSnackBarModule],
   templateUrl: './crear-mensualidad.component.html',
   styleUrl: './crear-mensualidad.component.css',
 })
@@ -23,8 +24,9 @@ export class CrearMensualidadComponent implements OnInit {
     'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
     'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
   ];
+ 
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router, private snackBar: MatSnackBar) {}
 
   async ngOnInit() {
     this.form = this.fb.group({
@@ -81,9 +83,9 @@ export class CrearMensualidadComponent implements OnInit {
 
     if (error) {
       console.error('❌ Error al registrar mensualidad:', error);
-      alert('❌ Error al registrar mensualidad:\n' + error.message);
+      this.snackBar.open('❌ Error al registrar mensualidad:\n' + error.message);
     } else {
-      alert('✅ Mensualidad registrada correctamente');
+      this.snackBar.open('✅ Mensualidad registrada correctamente');
       this.router.navigate(['/mensualidades']);
     }
   }

@@ -11,7 +11,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { createClient } from '@supabase/supabase-js';
 import { RouterModule } from '@angular/router'; 
-
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 const supabaseUrl = "https://fgfmtlvmpmiudjbufrjb.supabase.co";
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnZm10bHZtcG1pdWRqYnVmcmpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAzOTk1MTUsImV4cCI6MjA2NTk3NTUxNX0.RFIiNRunac0E1GhUwE6VKRpTNksW1y-s62GIY3DzGHA';
@@ -30,7 +30,8 @@ const supabase = createClient(supabaseUrl, supabaseKey);
     MatButtonModule,
     MatDividerModule,
     MatIconModule,
-    RouterModule 
+    RouterModule ,
+    MatSnackBarModule
   ],
   templateUrl: './pago-matriculas.component.html',
   styleUrl: './pago-matriculas.component.css'
@@ -47,6 +48,10 @@ export class PagoMatriculasComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+
+  constructor(
+    private snackBar: MatSnackBar
+  ) {}
   async ngOnInit() {
     console.log('#########ngOnInit se ejecutó');
 
@@ -84,10 +89,10 @@ export class PagoMatriculasComponent {
 
     if (error) {
       console.error('Error al eliminar matrícula:', error.message);
-      alert('No se pudo eliminar la matrícula');
+      this.snackBar.open('No se pudo eliminar la matrícula', 'Cerrar', { duration: 3000 });
     } else {
       this.dataSource.data = this.dataSource.data.filter(pago => pago.id_borrar !== id_borrar);
-      alert('Matrícula eliminada con éxito');
+      this.snackBar.open('Matrícula eliminada con éxito', 'Cerrar', { duration: 3000 });
     }
   }
 }

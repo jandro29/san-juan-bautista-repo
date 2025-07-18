@@ -31,79 +31,81 @@
                                     <mat-label>Filter</mat-label>
                                     <input matInput (keyup)="applyFilter($event)" placeholder="ID" #input>
                                 </mat-form-field>
-                              
+
                             </div>
 
+                            <div class="max-h-[300px] overflow-y-auto">
+                                <div class="mat-elevation-z8  flex w-[100%]">
+                                    <table mat-table [dataSource]="dataSource" matSort class="w-full">
 
-                            <div class="mat-elevation-z8  flex w-[100%]">
-                                <table mat-table [dataSource]="dataSource" matSort class="w-full">
+                                        <ng-container matColumnDef="id">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+                                            <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+                                        </ng-container>
 
-                                    <ng-container matColumnDef="id">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-                                        <td mat-cell *matCellDef="let row">{{ row.id }}</td>
-                                    </ng-container>
+                                        <ng-container matColumnDef="estudiante_id">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>año lectivo</th>
+                                            <td mat-cell *matCellDef="let row">{{ row.estudiante_id }}</td>
+                                        </ng-container>
 
-                                    <ng-container matColumnDef="estudiante_id">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>año lectivo</th>
-                                        <td mat-cell *matCellDef="let row">{{ row.estudiante_id }}</td>
-                                    </ng-container>
+                                        <ng-container matColumnDef="anio_lectivo">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>año lectivo</th>
+                                            <td mat-cell *matCellDef="let row">{{ row.anio_lectivo }}</td>
+                                        </ng-container>
 
-                                    <ng-container matColumnDef="anio_lectivo">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>año lectivo</th>
-                                        <td mat-cell *matCellDef="let row">{{ row.anio_lectivo }}</td>
-                                    </ng-container>
+                                        <ng-container matColumnDef="monto">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Monto</th>
+                                            <td mat-cell *matCellDef="let row">{{ row.monto }}</td>
+                                        </ng-container>
 
-                                    <ng-container matColumnDef="monto">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Monto</th>
-                                        <td mat-cell *matCellDef="let row">{{ row.monto }}</td>
-                                    </ng-container>
+                                        <ng-container matColumnDef="fecha_pago">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de pago</th>
+                                            <td mat-cell *matCellDef="let row">{{ row.fecha_pago }}</td>
+                                        </ng-container>
 
-                                    <ng-container matColumnDef="fecha_pago">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de pago</th>
-                                        <td mat-cell *matCellDef="let row">{{ row.fecha_pago }}</td>
-                                    </ng-container>
+                                        <ng-container matColumnDef="fecha_vencimiento">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de vencimiento
+                                            </th>
+                                            <td mat-cell *matCellDef="let row">{{ row.fecha_vencimiento }}</td>
+                                        </ng-container>
 
-                                    <ng-container matColumnDef="fecha_vencimiento">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de vencimiento</th>
-                                        <td mat-cell *matCellDef="let row">{{ row.fecha_vencimiento }}</td>
-                                    </ng-container>
+                                        <ng-container matColumnDef="pagado">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Pagado</th>
+                                            <td mat-cell *matCellDef="let row">{{ row.pagado }}</td>
+                                        </ng-container>
 
-                                    <ng-container matColumnDef="pagado">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Pagado</th>
-                                        <td mat-cell *matCellDef="let row">{{ row.pagado }}</td>
-                                    </ng-container>
+                                        <ng-container matColumnDef="created_at">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Created at</th>
+                                            <td mat-cell *matCellDef="let row">{{ row.created_at }}</td>
+                                        </ng-container>
 
-                                    <ng-container matColumnDef="created_at">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Created at</th>
-                                        <td mat-cell *matCellDef="let row">{{ row.created_at }}</td>
-                                    </ng-container>
+                                        <ng-container matColumnDef="updated_at">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header>updated at</th>
+                                            <td mat-cell *matCellDef="let row">{{ row.updated_at }}</td>
+                                        </ng-container>
 
-                                    <ng-container matColumnDef="updated_at">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>updated at</th>
-                                        <td mat-cell *matCellDef="let row">{{ row.updated_at }}</td>
-                                    </ng-container>
-
-                                    <ng-container matColumnDef="acciones">
-                                        <th mat-header-cell *matHeaderCellDef>Acciones</th>
-                                        <td mat-cell *matCellDef="let row">
-                                            <button (click)="eliminarPago(row.id_borrar)"
-                                                class="text-red-600 font-bold hover:underline">
-                                                Eliminar
-                                            </button>
-                                            <a [routerLink]="['/editar-matricula', row.id_borrar]"
-                                                class="text-blue-600 font-bold hover:underline">
-                                                Editar
-                                            </a>
-                                        </td>
-                                    </ng-container>
-
-
-
-                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                                </table>
+                                        <ng-container matColumnDef="acciones">
+                                            <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                                            <td mat-cell *matCellDef="let row">
+                                                <button (click)="eliminarPago(row.id_borrar)"
+                                                    class="text-red-600 font-bold hover:underline">
+                                                    Eliminar
+                                                </button>
+                                                <a [routerLink]="['/editar-matricula', row.id_borrar]"
+                                                    class="text-blue-600 font-bold hover:underline">
+                                                    Editar
+                                                </a>
+                                            </td>
+                                        </ng-container>
 
 
+
+                                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                    </table>
+
+
+                                </div>
                             </div>
                         </div>
 

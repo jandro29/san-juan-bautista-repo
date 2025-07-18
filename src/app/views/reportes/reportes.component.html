@@ -4,7 +4,7 @@
   <div class="flex">
     <app-menu-desplegable></app-menu-desplegable>
 
-    <div class="flex h-screen w-full bg-[#DBE0E6] items-center justify-center">
+    <div class="flex h-screen w-full bg-[#DBE0E6] justify-center">
       <div class="bg-[#F6F5FF] w-[950px]">
         <div class="m-[20px]">
           <div class="flex flex-row">
@@ -48,7 +48,7 @@
                 aria-label="Selector de página"
               ></mat-paginator>
 
-              <div  #tablaReportes class="h-[370px] overflow-y-auto">
+              <div  #tablaReportes class="max-h-[300px] overflow-y-auto">
                 <div class="mat-elevation-z8 w-full">
                   <table mat-table [dataSource]="dataSource" matSort>
                     <!-- ID -->

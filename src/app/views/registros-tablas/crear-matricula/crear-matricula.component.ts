@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { createClient } from '@supabase/supabase-js';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 const supabase = createClient(
   'https://fgfmtlvmpmiudjbufrjb.supabase.co',
@@ -12,7 +13,7 @@ const supabase = createClient(
 @Component({
   selector: 'app-crear-matricula',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MatSnackBarModule],
   templateUrl: './crear-matricula.component.html',
   styleUrl: './crear-matricula.component.css',
 })
@@ -21,7 +22,11 @@ export class CrearMatriculaComponent implements OnInit {
   estudiantes: any[] = [];
   anios: any[] = [];
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
   async ngOnInit() {
     this.form = this.fb.group({
@@ -49,25 +54,31 @@ export class CrearMatriculaComponent implements OnInit {
 
   async crearAnioLectivo() {
     const nuevoAnio = new Date().getFullYear();
-    const { data, error } = await supabase.from('anios_lectivos').insert({ anio: nuevoAnio }).select();
+    const { error } = await supabase.from('anios_lectivos').insert({ anio: nuevoAnio });
 
     if (error) {
-      alert('❌ Error al crear año lectivo');
+      this.snackBar.open('❌ Error al crear año lectivo', 'Cerrar', { duration: 3000 });
     } else {
-      alert(`✅ Año ${nuevoAnio} agregado`);
+      this.snackBar.open(`✅ Año ${nuevoAnio} agregado`, 'Cerrar', { duration: 3000 });
       await this.cargarAnios();
     }
   }
 
   async onSubmit() {
-    const { error } = await supabase.from('pagos_matricula').insert(this.form.value);
+    const now = new Date().toISOString();
+
+    const { error } = await supabase.from('pagos_matricula').insert({
+      ...this.form.value,
+      created_at: now,
+      updated_at: now,
+    });
 
     if (error) {
       console.error('❌ Error al registrar matrícula:', error.message);
-      alert('❌ Error al registrar matrícula');
+      this.snackBar.open('❌ Error al registrar matrícula', 'Cerrar', { duration: 3000 });
     } else {
-      alert('✅ Matrícula registrada correctamente');
-      this.router.navigate(['/matriculas']);
+      this.snackBar.open('✅ Matrícula registrada correctamente', 'Cerrar', { duration: 3000 });
+      setTimeout(() => this.router.navigate(['/matriculas']), 1500);
     }
   }
 }
