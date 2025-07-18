@@ -67,7 +67,7 @@ export class CrearMatriculaComponent implements OnInit {
       alert('❌ Error al registrar matrícula');
     } else {
       alert('✅ Matrícula registrada correctamente');
-      this.router.navigate(['/matriculas']); // reemplaza con la ruta deseada
+      this.router.navigate(['/matriculas']);
     }
   }
 }

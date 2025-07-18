@@ -27,13 +27,11 @@
                     <div class="flex w-[100%] mt-[5px] grid ">
                         <div class="flex w-[100%] flex-col">
                             <div class="flex items-center">
-                                <mat-form-field class="w-[80%]">
+                                <mat-form-field class="w-[100%]">
                                     <mat-label>Filter</mat-label>
-                                    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+                                    <input matInput (keyup)="applyFilter($event)" placeholder="ID" #input>
                                 </mat-form-field>
-                                <div class="flex items-center justify-center ml-[10px]">
-                                    <button mat-raised-button>Nuevo Pago</button>
-                                </div>
+                              
                             </div>
 
 
@@ -107,8 +105,6 @@
 
 
                             </div>
-                            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
-                                aria-label="Select page of users"></mat-paginator>
                         </div>
 
 

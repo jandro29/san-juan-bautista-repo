@@ -47,7 +47,19 @@ export const routes: Routes = [
   {
     path: 'editar-matricula/:id_borrar',
     loadComponent: () => import('./views/registros-tablas/editar-matricula/editar-matricula.component').then(m => m.EditarMatriculaComponent)
-  }
+  },
 
+    {
+    path: 'registrar-mensualidad',
+    loadComponent: () => import('./views/registros-tablas/crear-mensualidad/crear-mensualidad.component').then(m => m.CrearMensualidadComponent)
+  },
+
+  {
+    path: 'editar-mensualidad/:id_borrar',
+    loadComponent: () => import('./views/registros-tablas/editar-mensualidad/editar-mensualidad.component').then(m => m.EditarMensualidadComponent)
+  },
+
+
+  
 
 ];

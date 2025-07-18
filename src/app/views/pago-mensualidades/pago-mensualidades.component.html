@@ -6,20 +6,25 @@
 
     <div class="flex h-screen w-full bg-[#DBE0E6] ">
       <div class="bg-[#F6F5FF] ">
-        <div class="m-[20px]">
-          <p class="text-[20px] font-bold">Control de Pagos de Mensualidades</p>
-          <p class="text-[12px]">Registro y seguimiento de pagos mensuales</p>
+        <div class=" bg-[#F6F5FF] w-[100%]">
+          <div class="m-[20px] grid grid-cols-6 gap-4">
+            <p class=" text-[20px] font-bold">Control de Pagos de Mensualidades</p>
+            <a href="/registrar-mensualidad" class="col-span-2 col-end-7 bg-[#1E1B44] flex items-center justify-center">
+              <button class="cursor-pointer text-white">Registrar Matricula</button>
+            </a>
+          </div>
+
+          <div class="m-[20px]">
+            <p class=" text-[12px]">Registro y seguimiento de pagos mensuales</p>
+          </div>
         </div>
 
         <div class="flex w-full flex-col px-[20px]">
           <div class="flex items-center mb-4">
-            <mat-form-field class="w-[80%]">
+            <mat-form-field class="w-[100%]">
               <mat-label>Filtrar</mat-label>
-              <input matInput (keyup)="applyFilter($event)" placeholder="Ej. Juan">
+              <input matInput (keyup)="applyFilter($event)" placeholder="Buscar">
             </mat-form-field>
-            <div class="ml-[10px]">
-              <button mat-raised-button color="primary">Nuevo Pago</button>
-            </div>
           </div>
 
           <div class="mat-elevation-z8">
@@ -35,9 +40,9 @@
                 <td mat-cell *matCellDef="let row">{{ row.estudiante_id }}</td>
               </ng-container>
 
-              <ng-container matColumnDef="anio_lectivo_id">
+              <ng-container matColumnDef="anio_lectivo_mensualidad">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Año lectivo</th>
-                <td mat-cell *matCellDef="let row">{{ row.anio_lectivo_id }}</td>
+                <td mat-cell *matCellDef="let row">{{ row.anio_lectivo_mensualidad }}</td>
               </ng-container>
 
               <ng-container matColumnDef="mes">
@@ -75,12 +80,24 @@
                 <td mat-cell *matCellDef="let row">{{ row.updated_at }}</td>
               </ng-container>
 
+              <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                <td mat-cell *matCellDef="let row">
+                  <a [routerLink]="['/editar-mensualidad', row.id_eliminar]" class="text-blue-600 font-bold hover:underline">
+                    Editar
+                  </a>
+
+                  <button (click)="eliminarPago(row.id_eliminar)" class="text-red-600 font-bold hover:underline">
+                    Eliminar
+                  </button>
+                </td>
+              </ng-container>
+
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
           </div>
 
-          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Selector de página"></mat-paginator>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit, ElementRef } from '@angular/core';
 import { MenuDesplegableComponent } from '../menu-desplegable/menu-desplegable.component';
 import { BarraSuperiorComponent } from '../barra-superior/barra-superior.component';
 import { MatPaginator } from '@angular/material/paginator';
@@ -12,6 +12,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { createClient } from '@supabase/supabase-js';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+
 
 const supabaseUrl = 'https://fgfmtlvmpmiudjbufrjb.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnZm10bHZtcG1pdWRqYnVmcmpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAzOTk1MTUsImV4cCI6MjA2NTk3NTUxNX0.RFIiNRunac0E1GhUwE6VKRpTNksW1y-s62GIY3DzGHA';
@@ -58,6 +61,7 @@ export class ReportesComponent implements OnInit, AfterViewInit {
   ];
   dataSource = new MatTableDataSource<PagoReporte>();
 
+  @ViewChild('tablaReportes', { static: false }) tablaReportes!: ElementRef;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -128,11 +132,51 @@ export class ReportesComponent implements OnInit, AfterViewInit {
   }
 
   exportarPDF() {
-    console.log('Exportando PDF...');
-    // Aquí va la lógica de exportación si usas jsPDF
-  }
+  const doc = new jsPDF();
+
+  const columnas = [
+    { header: 'ID', dataKey: 'id' },
+    { header: 'Estudiante', dataKey: 'estudiante' },
+    { header: 'Tipo de Pago', dataKey: 'tipo_pago' },
+    { header: 'Monto', dataKey: 'monto' },
+    { header: 'Estado', dataKey: 'estado' },
+    { header: 'Fecha de Pago', dataKey: 'fecha_pago' },
+    { header: 'Fecha de Vencimiento', dataKey: 'fecha_vencimiento' },
+  ];
+
+  const datos = this.dataSource.data.map((pago) => ({
+    id: pago.id,
+    estudiante: pago.estudiante,
+    tipo_pago: pago.tipo_pago,
+    monto: pago.monto.toFixed(2),
+    estado: pago.estado,
+    fecha_pago: pago.fecha_pago ?? '—',
+    fecha_vencimiento: pago.fecha_vencimiento,
+  }));
+
+  autoTable(doc, {
+    columns: columnas,
+    body: datos,
+    styles: { fontSize: 8 },
+    headStyles: { fillColor: [41, 128, 185] },
+    margin: { top: 20 },
+  });
+
+  doc.save('reporte_pagos.pdf');
+}
 
   imprimir() {
-    window.print();
+     const tablaHTML = this.tablaReportes.nativeElement.innerHTML;
+  const ventana = window.open('', '', 'height=600,width=800');
+
+  if (ventana) {
+    ventana.document.write('<html><head><title>Imprimir Reporte</title>');
+    ventana.document.write('<style>table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid #ccc; padding: 8px; }</style>');
+    ventana.document.write('</head><body>');
+    ventana.document.write(tablaHTML);
+    ventana.document.write('</body></html>');
+    ventana.document.close();
+    ventana.print();
+  }
   }
 }
