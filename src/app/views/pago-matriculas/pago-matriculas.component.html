@@ -89,11 +89,11 @@
                                             <td mat-cell *matCellDef="let row">
                                                 <button (click)="eliminarPago(row.id_borrar)"
                                                     class="text-red-600 font-bold hover:underline">
-                                                    Eliminar
+                                                   <mat-icon>delete</mat-icon>
                                                 </button>
                                                 <a [routerLink]="['/editar-matricula', row.id_borrar]"
                                                     class="text-blue-600 font-bold hover:underline">
-                                                    Editar
+                                                    <mat-icon>edit</mat-icon>
                                                 </a>
                                             </td>
                                         </ng-container>

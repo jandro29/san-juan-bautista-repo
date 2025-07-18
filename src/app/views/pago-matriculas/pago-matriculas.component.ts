@@ -89,7 +89,7 @@ export class PagoMatriculasComponent {
 
     if (error) {
       console.error('Error al eliminar matrícula:', error.message);
-      this.snackBar.open('No se pudo eliminar la matrícula', 'Cerrar', { duration: 3000 });
+      this.snackBar.open('No se pudo eliminar la matrícula', 'Cerrar', { duration: 7000 });
     } else {
       this.dataSource.data = this.dataSource.data.filter(pago => pago.id_borrar !== id_borrar);
       this.snackBar.open('Matrícula eliminada con éxito', 'Cerrar', { duration: 3000 });

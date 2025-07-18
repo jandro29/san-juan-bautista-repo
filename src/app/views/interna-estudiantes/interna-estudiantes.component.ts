@@ -12,6 +12,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { createClient } from '@supabase/supabase-js';
 import { RouterModule } from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
 
 const supabaseUrl = "https://fgfmtlvmpmiudjbufrjb.supabase.co";
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnZm10bHZtcG1pdWRqYnVmcmpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAzOTk1MTUsImV4cCI6MjA2NTk3NTUxNX0.RFIiNRunac0E1GhUwE6VKRpTNksW1y-s62GIY3DzGHA';
@@ -28,7 +29,8 @@ const supabase = createClient(supabaseUrl, supabaseKey);
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    RouterModule
+    RouterModule,
+    MatIconModule
   ],
   templateUrl: './interna-estudiantes.component.html',
   styleUrl: './interna-estudiantes.component.css',

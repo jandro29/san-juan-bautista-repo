@@ -1,4 +1,15 @@
 <div class="h-screen flex items-center justify-center bg-gray-100">
+
+     <a href="/">
+  <button class="absolute top-4 left-4 flex items-center text-blue-600 hover:text-blue-800" >
+    <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+         xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+    </svg>
+    Volver
+  </button>
+  </a>
+
     <div class="w-full max-w-md p-8 bg-white rounded-xl shadow-lg">
         <form [formGroup]="registerForm" (ngSubmit)="registrarUsuario()" autocomplete="off">
 

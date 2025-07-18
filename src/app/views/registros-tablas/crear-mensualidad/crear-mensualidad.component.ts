@@ -48,7 +48,7 @@ export class CrearMensualidadComponent implements OnInit {
       .select('id, nombre, apellidos');
 
     if (error) {
-      console.error('❌ Error al cargar estudiantes:', error);
+      console.error(' Error al cargar estudiantes:', error);
     }
 
     this.estudiantes = data || [];
@@ -56,7 +56,7 @@ export class CrearMensualidadComponent implements OnInit {
 
   async onSubmit() {
     if (this.form.invalid) {
-      alert('⚠️ Todos los campos son obligatorios.');
+      alert(' Todos los campos son obligatorios.');
       return;
     }
 
@@ -72,20 +72,20 @@ export class CrearMensualidadComponent implements OnInit {
       pagado: this.form.value.pagado === 'true',
       created_at: now.toISOString(),
       updated_at: now.toISOString(),
-      id_eliminar: crypto.randomUUID(), // ✅ UUID generado automáticamente
+      id_eliminar: crypto.randomUUID(), 
     };
 
-    console.log('📦 Enviando datos a Supabase:', mensualidad);
+    console.log(' Enviando datos a Supabase:', mensualidad);
 
     const { error } = await supabase
       .from('pagos_mensualidad')
       .insert([mensualidad]);
 
     if (error) {
-      console.error('❌ Error al registrar mensualidad:', error);
-      this.snackBar.open('❌ Error al registrar mensualidad:\n' + error.message);
+      console.error(' Error al registrar mensualidad:', error);
+      this.snackBar.open(' Error al registrar mensualidad:\n' + error.message);
     } else {
-      this.snackBar.open('✅ Mensualidad registrada correctamente');
+      this.snackBar.open('Mensualidad registrada correctamente');
       this.router.navigate(['/mensualidades']);
     }
   }

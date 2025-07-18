@@ -13,6 +13,7 @@ import { BarraSuperiorComponent } from '../barra-superior/barra-superior.compone
 import { MenuDesplegableComponent } from '../menu-desplegable/menu-desplegable.component';
 import { RouterModule } from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
 
 const supabaseUrl = 'https://fgfmtlvmpmiudjbufrjb.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnZm10bHZtcG1pdWRqYnVmcmpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAzOTk1MTUsImV4cCI6MjA2NTk3NTUxNX0.RFIiNRunac0E1GhUwE6VKRpTNksW1y-s62GIY3DzGHA';
@@ -34,6 +35,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
     BarraSuperiorComponent,
     MenuDesplegableComponent,
     RouterModule,
+    MatIconModule
   ],
 })
 export class PagoMensualidadesComponent {
@@ -88,7 +90,7 @@ export class PagoMensualidadesComponent {
 
     if (error) {
       console.error('Error al eliminar pago mensual:', error.message);
-      this.snackBar.open('No se pudo eliminar el pago mensual', 'Cerrar', { duration: 3000 });
+      this.snackBar.open('No se pudo eliminar el pago mensual', 'Cerrar', { duration: 7000 });
     } else {
       this.dataSource.data = this.dataSource.data.filter(
         (pago) => pago.id_eliminar !== id_eliminar
