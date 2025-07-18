@@ -1,0 +1,74 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-100 relative px-4">
+  <!-- Botón regresar -->
+   <a href="/mensualidades">
+  <button class="absolute top-4 left-4 flex items-center text-blue-600 hover:text-blue-800" >
+    <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+         xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+    </svg>
+    Volver
+  </button>
+  </a>
+
+  <!-- Formulario -->
+  <div class="p-8 max-w-xl w-full bg-white shadow rounded">
+    <h2 class="text-2xl font-bold mb-6 text-center">Registrar Mensualidad</h2>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- Estudiante -->
+      <div class="mb-4">
+        <label class="block mb-1">Estudiante</label>
+        <select formControlName="estudiante_id" class="w-full p-2 border rounded">
+          <option *ngFor="let est of estudiantes" [value]="est.id">
+            {{ est.nombre }} {{ est.apellidos }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Año lectivo y Monto -->
+      <div class="mb-4 flex gap-4">
+        <div class="w-1/2">
+          <label class="block mb-1">Año Lectivo</label>
+          <input formControlName="anio_lectivo_mensualidad" type="date" class="w-full p-2 border rounded" />
+        </div>
+        <div class="w-1/2">
+          <label class="block mb-1">Monto</label>
+          <input formControlName="monto" type="number" class="w-full p-2 border rounded" />
+        </div>
+      </div>
+
+      <!-- Mes -->
+      <div class="mb-4">
+        <label class="block mb-1">Mes</label>
+        <select formControlName="mes" class="w-full p-2 border rounded">
+          <option *ngFor="let m of meses" [value]="m">{{ m }}</option>
+        </select>
+      </div>
+
+      <!-- Fecha de Pago y Fecha de Vencimiento -->
+      <div class="mb-4 flex gap-4">
+        <div class="w-1/2">
+          <label class="block mb-1">Fecha de Pago</label>
+          <input formControlName="fecha_pago" type="date" class="w-full p-2 border rounded" />
+        </div>
+        <div class="w-1/2">
+          <label class="block mb-1">Fecha de Vencimiento</label>
+          <input formControlName="fecha_vencimiento" type="date" class="w-full p-2 border rounded" />
+        </div>
+      </div>
+
+      <!-- Pagado -->
+      <div class="mb-4">
+        <label class="block mb-1">¿Pagado?</label>
+        <select formControlName="pagado" class="w-full p-2 border rounded">
+          <option value="true">Sí</option>
+          <option value="false">No</option>
+        </select>
+      </div>
+
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+        Guardar Mensualidad
+      </button>
+    </form>
+  </div>
+</div>

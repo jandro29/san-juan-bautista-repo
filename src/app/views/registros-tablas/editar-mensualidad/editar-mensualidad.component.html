@@ -1,0 +1,47 @@
+<div class="p-8 max-w-xl mx-auto bg-white shadow rounded">
+  <h2 class="text-2xl font-bold mb-6 text-center">Editar Mensualidad</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="form">
+    <div class="mb-4">
+      <label class="block mb-1">Estudiante ID</label>
+      <input class="w-full p-2 border rounded" formControlName="estudiante_id" />
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1">Año Lectivo</label>
+      <input type="date" class="w-full p-2 border rounded" formControlName="anio_lectivo_mensualidad" />
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1">Mes</label>
+      <input class="w-full p-2 border rounded" formControlName="mes" />
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1">Monto</label>
+      <input type="number" class="w-full p-2 border rounded" formControlName="monto" />
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1">Fecha de Pago</label>
+      <input type="date" class="w-full p-2 border rounded" formControlName="fecha_pago" />
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1">Fecha de Vencimiento</label>
+      <input type="date" class="w-full p-2 border rounded" formControlName="fecha_vencimiento" />
+    </div>
+
+    <div class="mb-4">
+      <label class="block mb-1">Pagado</label>
+      <select class="w-full p-2 border rounded" formControlName="pagado">
+        <option [value]="true">Sí</option>
+        <option [value]="false">No</option>
+      </select>
+    </div>
+
+    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+      Guardar Cambios
+    </button>
+  </form>
+</div>
