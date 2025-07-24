@@ -1,0 +1,122 @@
+<section class="contenedor w-full h-screen overflow-hidden relative">
+  <app-barra-superior></app-barra-superior>
+
+  <div class="flex">
+    <app-menu-desplegable></app-menu-desplegable>
+
+    <div class="flex h-screen w-full bg-[#DBE0E6] justify-center">
+      <div class="bg-[#F6F5FF] w-full">
+        <div class="m-[20px]">
+          <div class="flex flex-row">
+            <div class="grid grid-cols-6 gap-4">
+              <p class="text-[48px] font-bold col-start-1 col-end-4">INICIAL</p>
+            </div>
+          </div>
+
+          <div class="flex w-full mt-10 grid">
+            <div class="flex w-full flex-col">
+              <mat-form-field>
+                <mat-label>Buscar</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Buscar por alumno o ID" />
+              </mat-form-field>
+
+              <!-- SCROLL HORIZONTAL + VERTICAL ACTIVO -->
+              <div class="overflow-auto w-[1070px] max-h-[500px] border border-gray-300 rounded-md">
+                <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 min-w-[1400px]">
+
+                  <!-- Columnas -->
+                  <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+                    <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="alumno">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Alumno</th>
+                    <td mat-cell *matCellDef="let row">{{ row.alumno }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="apoderado">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Apoderado</th>
+                    <td mat-cell *matCellDef="let row">{{ row.apoderado }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="matricula">
+                    <th mat-header-cell *matHeaderCellDef>Matricula</th>
+                    <td mat-cell *matCellDef="let row">{{ row.matricula }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="marzo">
+                    <th mat-header-cell *matHeaderCellDef>Marzo</th>
+                    <td mat-cell *matCellDef="let row">{{ row['mensualidad-marzo'] }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="abril">
+                    <th mat-header-cell *matHeaderCellDef>Abril</th>
+                    <td mat-cell *matCellDef="let row">{{ row['mensualidad-abril'] }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="mayo">
+                    <th mat-header-cell *matHeaderCellDef>Mayo</th>
+                    <td mat-cell *matCellDef="let row">{{ row['mensualidad-mayo'] }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="junio">
+                    <th mat-header-cell *matHeaderCellDef>Junio</th>
+                    <td mat-cell *matCellDef="let row">{{ row['mensualidad-junio'] }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="julio">
+                    <th mat-header-cell *matHeaderCellDef>Julio</th>
+                    <td mat-cell *matCellDef="let row">{{ row['mensualidad-julio'] }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="agosto">
+                    <th mat-header-cell *matHeaderCellDef>Agosto</th>
+                    <td mat-cell *matCellDef="let row">{{ row['mensualidad-agosto'] }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="sept">
+                    <th mat-header-cell *matHeaderCellDef>Septiembre</th>
+                    <td mat-cell *matCellDef="let row">{{ row['mensualidad-sept'] }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="octubre">
+                    <th mat-header-cell *matHeaderCellDef>Octubre</th>
+                    <td mat-cell *matCellDef="let row">{{ row['mensualidad-octubre'] }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="noviembre">
+                    <th mat-header-cell *matHeaderCellDef>Noviembre</th>
+                    <td mat-cell *matCellDef="let row">{{ row['mensualidad-noviembre'] }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="diciembre">
+                    <th mat-header-cell *matHeaderCellDef>Diciembre</th>
+                    <td mat-cell *matCellDef="let row">{{ row['mensualidad-diciembre'] }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="total_pago">
+                    <th mat-header-cell *matHeaderCellDef>Total Pago</th>
+                    <td mat-cell *matCellDef="let row">{{ row['total-pago'] }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="created_at">
+                    <th mat-header-cell *matHeaderCellDef>Creado</th>
+                    <td mat-cell *matCellDef="let row">{{ row.created_at | date: 'short' }}</td>
+                  </ng-container>
+
+                  <!-- Encabezados -->
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              </div>
+
+              <!-- Paginación debajo de la tabla -->
+              <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -85,7 +85,7 @@ export class CrearMensualidadComponent implements OnInit {
       console.error(' Error al registrar mensualidad:', error);
       this.snackBar.open(' Error al registrar mensualidad:\n' + error.message);
     } else {
-      this.snackBar.open('Mensualidad registrada correctamente');
+      this.snackBar.open('Mensualidad registrada correctamente =)');
       this.router.navigate(['/mensualidades']);
     }
   }

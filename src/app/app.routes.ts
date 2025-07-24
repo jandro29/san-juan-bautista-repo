@@ -59,6 +59,11 @@ export const routes: Routes = [
     loadComponent: () => import('./views/registros-tablas/editar-mensualidad/editar-mensualidad.component').then(m => m.EditarMensualidadComponent)
   },
 
+  {
+    path: 'inicial',
+    loadComponent: () => import('./views/internas-grados/inicial/inicial.component').then(m => m.InicialComponent)
+  },
+
 
   
 
