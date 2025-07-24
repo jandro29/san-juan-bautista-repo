@@ -4,6 +4,7 @@ import { BarraSuperiorComponent } from '../../barra-superior/barra-superior.comp
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
@@ -14,6 +15,7 @@ import { RouterModule } from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { NgIf, NgFor } from '@angular/common';
 
 const supabaseUrl = "https://fgfmtlvmpmiudjbufrjb.supabase.co";
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnZm10bHZtcG1pdWRqYnVmcmpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAzOTk1MTUsImV4cCI6MjA2NTk3NTUxNX0.RFIiNRunac0E1GhUwE6VKRpTNksW1y-s62GIY3DzGHA';
@@ -33,19 +35,19 @@ const supabase = createClient(supabaseUrl, supabaseKey);
     RouterModule,
     MatIconModule,
     MatSnackBarModule,
-    CommonModule
+    MatDialogModule,
+    CommonModule,
+    NgIf,
+    NgFor
   ],
   templateUrl: './inicial.component.html',
   styleUrl: './inicial.component.css',
 })
 export class InicialComponent implements OnInit {
-  displayedColumns: string[] = [
-    'id', 'alumno', 'apoderado', 'matricula',
-    'marzo', 'abril', 'mayo', 'junio', 'julio',
-    'agosto', 'sept', 'octubre', 'noviembre',
-    'diciembre', 'total_pago', 'created_at'
-  ];
+  displayedColumns: string[] = ['alumno', 'apoderado', 'created_at', 'total_pago', 'acciones'];
   dataSource = new MatTableDataSource<any>();
+  selectedAlumno: any = null;
+  showModal: boolean = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -68,5 +70,15 @@ export class InicialComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  verDetalles(row: any) {
+    this.selectedAlumno = row;
+    this.showModal = true;
+  }
+
+  cerrarModal() {
+    this.showModal = false;
+    this.selectedAlumno = null;
   }
 }
